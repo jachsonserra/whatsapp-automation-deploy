@@ -43,6 +43,26 @@
 
         <div class="section">
             <h2>🎬 Watch Our Video Sales Letter (Auto-plays)</h2>
+            
+            <!-- Language selector -->
+            <div style="text-align: center; margin-bottom: 20px;">
+                <div style="display: inline-flex; background: #f8f9fa; padding: 8px; border-radius: 50px; gap: 5px;">
+                    <button 
+                        style="padding: 10px 20px; border: none; border-radius: 50px; background: #25d366; color: white; font-weight: bold; cursor: pointer; transition: all 0.2s;" 
+                        id="lang-en" 
+                        onclick="switchLanguage('en')">
+                        🇬🇧 English
+                    </button>
+                    <button 
+                        style="padding: 10px 20px; border: none; border-radius: 50px; background: #f8f9fa; color: #333; font-weight: bold; cursor: pointer; transition: all 0.2s;" 
+                        id="lang-es" 
+                        onclick="switchLanguage('es')">
+                        🇪🇸 Español
+                    </button>
+                </div>
+                <p style="margin-top: 10px; font-size: 0.85rem; color: #666;">Select your preferred language • Subtitles available</p>
+            </div>
+            
             <div style="text-align: center; margin: 30px 0;">
                 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); background: #000; cursor: pointer;" id="video-container">
                     <video 
@@ -53,9 +73,11 @@
                         loop
                         poster="/whatsapp-automation-video-poster.jpg"
                         title="WhatsApp Automation Pack - Video Sales Letter"
-                        id="sales-video">
-                        <source src="/whatsapp-automation-video.mp4" type="video/mp4">
-                        Your browser does not support the video tag. <a href="/whatsapp-automation-video.mp4">Download the video</a>
+                        id="sales-video"
+                        data-video-en="/whatsapp-automation-video-EN.mp4"
+                        data-video-es="/whatsapp-automation-video-ES.mp4">
+                        <source src="/whatsapp-automation-video-EN.mp4" type="video/mp4" id="video-source">
+                        Your browser does not support the video tag. <a href="/whatsapp-automation-video-EN.mp4">Download the video</a>
                     </video>
                     
                     <!-- Sound unmute overlay -->
@@ -66,7 +88,7 @@
                 </div>
                 <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">
                     This video autoplays to show you exactly how to stop losing sales<br>
-                    <span style="font-size: 0.8rem; color: #999;">Click the speaker icon to unmute • Video hosted directly</span>
+                    <span style="font-size: 0.8rem; color: #999;">Click the speaker icon to unmute • Video hosted directly • Select language above</span>
                 </p>
             </div>
 
@@ -272,6 +294,63 @@
                 });
             }
         });
+        
+        // Language switching function
+        function switchLanguage(lang) {
+            const video = document.getElementById('sales-video');
+            const videoSource = document.getElementById('video-source');
+            const btnEn = document.getElementById('lang-en');
+            const btnEs = document.getElementById('lang-es');
+            
+            if (!video || !videoSource) return;
+            
+            // Update active button
+            if (lang === 'en') {
+                btnEn.style.background = '#25d366';
+                btnEn.style.color = 'white';
+                btnEs.style.background = '#f8f9fa';
+                btnEs.style.color = '#333';
+                
+                // Switch video source
+                videoSource.setAttribute('src', '/whatsapp-automation-video-EN.mp4');
+                video.load();
+                video.play();
+                video.muted = true; // Keep muted initially
+                
+                // Reset sound overlay
+                const soundOverlay = document.getElementById('sound-overlay');
+                if (soundOverlay) {
+                    soundOverlay.innerHTML = '<span style="font-size: 1.2rem;">🔇</span><span>Click to enable sound</span>';
+                    soundOverlay.style.display = 'flex';
+                    soundOverlay.style.opacity = '1';
+                }
+            } else if (lang === 'es') {
+                btnEs.style.background = '#25d366';
+                btnEs.style.color = 'white';
+                btnEn.style.background = '#f8f9fa';
+                btnEn.style.color = '#333';
+                
+                // Switch video source
+                videoSource.setAttribute('src', '/whatsapp-automation-video-ES.mp4');
+                video.load();
+                video.play();
+                video.muted = true; // Keep muted initially
+                
+                // Reset sound overlay
+                const soundOverlay = document.getElementById('sound-overlay');
+                if (soundOverlay) {
+                    soundOverlay.innerHTML = '<span style="font-size: 1.2rem;">🔇</span><span>Click to enable sound</span>';
+                    soundOverlay.style.display = 'flex';
+                    soundOverlay.style.opacity = '1';
+                }
+            }
+        }
+        
+        // Initialize with English as default
+        window.addEventListener('load', function() {
+            switchLanguage('en');
+        });
+        
     </script>
 </body>
 </html>
