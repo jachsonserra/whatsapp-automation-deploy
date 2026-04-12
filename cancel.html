@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Cancelled</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; background: #f8f9fa; }
+        .container { text-align: center; max-width: 500px; padding: 40px; background: white; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        h1 { color: #ff6b6b; }
+        .icon { font-size: 4rem; color: #ff6b6b; margin-bottom: 20px; }
+        .button { display: inline-block; background: #667eea; color: white; padding: 12px 24px; text-decoration: none; border-radius: 50px; font-weight: bold; margin: 10px; }
+        .button-secondary { background: #6c757d; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">❌</div>
+        <h1>Payment Cancelled</h1>
+        <p>Your payment was not completed. No charges were made.</p>
+        <p>If you encountered an issue or changed your mind, you can return to the product page.</p>
+        
+        <div style="margin-top: 30px;">
+            <a href="/" class="button">Return to Product Page</a>
+            <a href="https://buy.stripe.com/eVqbJ24SVdxxgX53QxdEs04" class="button button-secondary">Try Checkout Again</a>
+        </div>
+        
+        <p style="margin-top: 30px; font-size: 0.9rem; color: #666;">
+            Need help? Email support@whatsflowpro.com
+        </p>
+    </div>
+</body>
+</html>

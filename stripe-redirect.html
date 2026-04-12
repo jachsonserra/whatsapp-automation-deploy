@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting to Stripe Checkout...</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; background: #f8f9fa; }
+        .container { text-align: center; max-width: 500px; padding: 40px; background: white; border-radius: 10px; box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
+        h1 { color: #667eea; }
+        .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #25d366; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .button { display: inline-block; background: #25d366; color: white; padding: 12px 24px; text-decoration: none; border-radius: 50px; font-weight: bold; margin-top: 20px; }
+    </style>
+    <script>
+        // Redirect after 1 second
+        setTimeout(function() {
+            window.location.href = 'https://buy.stripe.com/eVqbJ24SVdxxgX53QxdEs04';
+        }, 1000);
+        
+        // If still not redirected after 3 seconds, show manual link
+        setTimeout(function() {
+            document.getElementById('manual-link').style.display = 'block';
+        }, 3000);
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="spinner"></div>
+        <h1>Redirecting to Secure Checkout...</h1>
+        <p>Your payment is processed securely by Stripe.</p>
+        <p>If you are not redirected automatically within 3 seconds, click below:</p>
+        <a id="manual-link" href="https://buy.stripe.com/eVqbJ24SVdxxgX53QxdEs04" class="button" style="display: none;">Proceed to Stripe Checkout →</a>
+        <p style="margin-top: 30px; font-size: 0.9rem; color: #666;">If the button doesn't work, copy and paste this link in your browser:<br>
+        <code style="background: #f8f9fa; padding: 5px; border-radius: 4px; font-size: 0.8rem;">https://buy.stripe.com/eVqbJ24SVdxxgX53QxdEs04</code></p>
+    </div>
+</body>
+</html>

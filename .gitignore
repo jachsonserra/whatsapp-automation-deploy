@@ -1,0 +1,97 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variable files
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build outputs
+build/
+dist/
+out/
+
+# Temporary files
+.DS_Store
+*.swp
+*.swo
+*~
+\#*\#
+.\#*
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# System files
+Thumbs.db
+
+# Sales data (contains sensitive info)
+sales.json
+tokens.json
+
+# Media files (video hosted locally)
+# *.mp4 included in repo for direct hosting
+*.mov
+*.avi
+*.mkv
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Server logs
+server.log
+ngrok.log
+
+# Netlify specific
+.netlify/
+
+# Test files
+test_*.py
+*.test.js
+
+# OpenClaw agent directories
+arquiteto/
+demolidor/
+bob/
+olho-de-deus/
+cofre/
+midia/
+nerd/
+midas/
+guerra/
+fenix/
+pack-whatsapp/

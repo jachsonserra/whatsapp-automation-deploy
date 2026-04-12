@@ -1,0 +1,13 @@
+{
+  "name": "whatsapp-automation-pack",
+  "version": "1.0.0",
+  "description": "WhatsApp Automation Pack landing page with Stripe integration",
+  "scripts": {
+    "build": "echo 'No build required'",
+    "start": "echo 'Use netlify dev'"
+  },
+  "dependencies": {
+    "stripe": "^17.3.0"
+  },
+  "devDependencies": {}
+}
