@@ -6,215 +6,488 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>WhatsApp Automation Pack for EU SMEs</title>
+    <title>WhatsApp Automation Pack | Stop Losing Sales on WhatsApp (GDPR Compliant)</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: #f8f9fa; }
-        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
-        header { text-align: center; padding: 40px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 10px; margin-bottom: 30px; }
-        h1 { font-size: 2.5rem; margin-bottom: 10px; }
-        .subtitle { font-size: 1.2rem; opacity: 0.9; }
-        .price { font-size: 3rem; font-weight: bold; color: #25d366; margin: 20px 0; }
-        .old-price { text-decoration: line-through; color: #999; font-size: 1.5rem; }
-        .cta-button { display: inline-block; background: #25d366; color: white; padding: 15px 30px; font-size: 1.2rem; font-weight: bold; text-decoration: none; border-radius: 50px; margin: 20px 0; transition: transform 0.2s; }
-        .cta-button:hover { transform: translateY(-2px); background: #1da851; }
-        .section { background: white; padding: 30px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h2 { color: #667eea; margin-bottom: 20px; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; }
-        .benefits { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 20px 0; }
-        .benefit { background: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 4px solid #25d366; }
-        .testimonial { background: #e8f4ff; padding: 20px; border-radius: 8px; margin: 20px 0; font-style: italic; }
-        .faq-item { margin-bottom: 25px; }
-        .faq-item h3 { color: #667eea; font-size: 1.1rem; margin-bottom: 8px; }
-        .faq-item p { color: #555; line-height: 1.5; }
-        footer { text-align: center; padding: 30px 0; color: #666; font-size: 0.9rem; }
-        .guarantee { background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 8px; margin: 20px 0; }
-        @media (max-width: 600px) { h1 { font-size: 2rem; } .container { padding: 10px; } }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; line-height: 1.6; color: #333; background: #f8f9fa; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        
+        /* Hero Section */
+        .hero { 
+            text-align: center; 
+            padding: 50px 0 30px; 
+            background: linear-gradient(135deg, #25d366 0%, #128C7E 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.2);
+        }
+        .hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
+        .hero .subtitle { font-size: 1.4rem; opacity: 0.95; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .price-badge { 
+            display: inline-block; 
+            background: white; 
+            color: #25d366; 
+            padding: 15px 30px; 
+            font-size: 2.5rem; 
+            font-weight: 800; 
+            border-radius: 50px; 
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .old-price { 
+            text-decoration: line-through; 
+            color: rgba(255,255,255,0.7); 
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+        
+        /* Video Section */
+        .video-section { 
+            background: white; 
+            padding: 40px; 
+            border-radius: 15px; 
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border: 2px solid #e9ecef;
+        }
+        .video-section h2 { 
+            text-align: center; 
+            color: #128C7E; 
+            font-size: 2.2rem; 
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            border-radius: 12px;
+            background: #000;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        /* Language Selector */
+        .lang-selector {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .lang-btn {
+            padding: 12px 25px;
+            border: 2px solid #25d366;
+            background: white;
+            color: #25d366;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .lang-btn.active {
+            background: #25d366;
+            color: white;
+        }
+        .lang-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.2);
+        }
+        
+        /* Pain Points */
+        .pain-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border-left: 5px solid #ff6b6b;
+        }
+        .pain-section h2 { color: #ff6b6b; margin-bottom: 25px; font-size: 2rem; }
+        .pain-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .pain-point {
+            background: #fff5f5;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #ffe3e3;
+        }
+        .pain-point h3 { color: #ff6b6b; margin-bottom: 15px; font-size: 1.3rem; }
+        
+        /* Benefits */
+        .benefits-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border-left: 5px solid #25d366;
+        }
+        .benefits-section h2 { color: #25d366; margin-bottom: 25px; font-size: 2rem; }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .benefit-card {
+            background: #f0fff4;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #d4f8e1;
+            transition: transform 0.2s;
+        }
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.1);
+        }
+        .benefit-card h3 { color: #25d366; margin-bottom: 15px; font-size: 1.3rem; }
+        .benefit-icon { font-size: 2.5rem; margin-bottom: 15px; }
+        
+        /* Testimonials */
+        .testimonials-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+        .testimonials-section h2 { 
+            text-align: center; 
+            color: #667eea; 
+            margin-bottom: 30px; 
+            font-size: 2rem;
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .testimonial-card {
+            background: #f8f9ff;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            font-style: italic;
+        }
+        .testimonial-author {
+            margin-top: 15px;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        /* Guarantee */
+        .guarantee-section {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border: 2px solid #ffc107;
+            text-align: center;
+        }
+        .guarantee-section h2 { color: #856404; margin-bottom: 20px; font-size: 2rem; }
+        
+        /* Urgency */
+        .urgency-section {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            color: white;
+            text-align: center;
+        }
+        .urgency-section h2 { margin-bottom: 20px; font-size: 2rem; }
+        .counter { 
+            font-size: 4rem; 
+            font-weight: 800; 
+            margin: 20px 0;
+            text-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        /* CTA */
+        .cta-section {
+            text-align: center;
+            padding: 40px;
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .cta-button {
+            display: inline-block;
+            background: #25d366;
+            color: white;
+            padding: 20px 50px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-decoration: none;
+            border-radius: 50px;
+            margin: 20px 0;
+            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
+            background: #1da851;
+        }
+        
+        /* FAQ */
+        .faq-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+        .faq-section h2 { color: #333; margin-bottom: 25px; font-size: 2rem; }
+        .faq-item {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 25px;
+        }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-item h3 { color: #128C7E; margin-bottom: 10px; font-size: 1.2rem; }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero .subtitle { font-size: 1.1rem; }
+            .price-badge { font-size: 2rem; padding: 12px 25px; }
+            .container { padding: 10px; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>WhatsApp Automation Pack</h1>
-            <p class="subtitle">Stop losing sales on WhatsApp. Automate with full GDPR compliance.</p>
-            <div class="price">€97 <span class="old-price">€197</span></div>
-            <a href="https://buy.stripe.com/eVqbJ24SVdxxgX53QxdEs04" class="cta-button" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, '_blank'); return false;">Get Instant Access →</a>
-            <p>One-time payment • 30-day money-back guarantee</p>
+        <!-- Hero Section -->
+        <header class="hero">
+            <h1>Stop Losing Sales on WhatsApp</h1>
+            <p class="subtitle">Get GDPR-Compliant WhatsApp Automation That Responds in 42 Seconds, Saves 10+ Hours/Week, and Increases Sales by 20-40%</p>
+            
+            <div class="price-badge">
+                <span class="old-price">€197</span> 
+                <span class="current-price">€97</span>
+            </div>
+            <p>One-time payment • Lifetime updates • 30-day money-back guarantee</p>
+            
+            <a href="#cta" class="cta-button" style="margin-top: 30px;">
+                Get Instant Access Now →
+            </a>
         </header>
-
-        <div class="section">
-            <h2>🎬 Watch Our Video Sales Letter (Auto-plays)</h2>
+        
+        <!-- Video Sales Letter -->
+        <section class="video-section" id="video">
+            <h2>🎬 Watch This 2-Minute Video Sales Letter</h2>
+            <p style="text-align: center; margin-bottom: 20px; color: #666; font-size: 1.1rem;">
+                See exactly how our WhatsApp Automation Pack solves your biggest problems
+            </p>
             
-            <!-- Language selector -->
-            <div style="text-align: center; margin-bottom: 20px;">
-                <div style="display: inline-flex; background: #f8f9fa; padding: 8px; border-radius: 50px; gap: 5px;">
-                    <button 
-                        style="padding: 10px 20px; border: none; border-radius: 50px; background: #25d366; color: white; font-weight: bold; cursor: pointer; transition: all 0.2s;" 
-                        id="lang-en" 
-                        onclick="switchLanguage('en')">
-                        🇬🇧 English
-                    </button>
-                    <button 
-                        style="padding: 10px 20px; border: none; border-radius: 50px; background: #f8f9fa; color: #333; font-weight: bold; cursor: pointer; transition: all 0.2s;" 
-                        id="lang-es" 
-                        onclick="switchLanguage('es')">
-                        🇪🇸 Español
-                    </button>
-                </div>
-                <p style="margin-top: 10px; font-size: 0.85rem; color: #666;">Select your preferred language • Subtitles available</p>
+            <!-- Language Selector -->
+            <div class="lang-selector">
+                <button class="lang-btn active" data-lang="en">🇬🇧 English</button>
+                <button class="lang-btn" data-lang="es">🇪🇸 Español</button>
             </div>
             
-            <div style="text-align: center; margin: 30px 0;">
-                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); background: #000; cursor: pointer;" id="video-container">
-                    <video 
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;"
-                        playsinline
-                        autoplay
-                        muted
-                        loop
-                        poster="/whatsapp-automation-video-poster.jpg"
-                        title="WhatsApp Automation Pack - Video Sales Letter"
-                        id="sales-video"
-                        data-video-en="/whatsapp-automation-video-EN.mp4"
-                        data-video-es="/whatsapp-automation-video-ES.mp4">
-                        <source src="/whatsapp-automation-video-EN.mp4" type="video/mp4" id="video-source">
-                        Your browser does not support the video tag. <a href="/whatsapp-automation-video-EN.mp4">Download the video</a>
-                    </video>
-                    
-                    <!-- Autoplay fallback overlay -->
-                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.8); color: white; z-index: 10;" id="autoplay-fallback">
-                        <div style="font-size: 4rem; margin-bottom: 20px;">▶️</div>
-                        <h3 style="margin-bottom: 10px;">Video Ready to Play</h3>
-                        <p style="margin-bottom: 20px; max-width: 80%; text-align: center;">Click the button below to start the video sales letter</p>
-                        <button style="padding: 15px 30px; background: #25d366; color: white; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: bold; cursor: pointer;" id="play-fallback-button">
-                            Play Video Now
-                        </button>
-                    </div>
-                    
-                    <!-- Sound unmute overlay -->
-                    <div style="position: absolute; bottom: 20px; right: 20px; background: rgba(0,0,0,0.7); color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;" id="sound-overlay">
-                        <span style="font-size: 1.2rem;">🔇</span>
-                        <span>Click to enable sound</span>
-                    </div>
+            <!-- Video Container -->
+            <div class="video-container">
+                <video id="sales-video" playsinline autoplay muted loop poster="/whatsapp-automation-video-poster.jpg">
+                    <source id="video-source" src="/whatsapp-automation-video-EN.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                
+                <!-- Autoplay Fallback -->
+                <div id="autoplay-fallback" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); color: white; display: none; flex-direction: column; align-items: center; justify-content: center; z-index: 10;">
+                    <div style="font-size: 4rem; margin-bottom: 20px;">▶️</div>
+                    <h3 style="margin-bottom: 10px;">Click to Play Video</h3>
+                    <p style="margin-bottom: 20px; max-width: 80%; text-align: center;">Start watching to see how you can stop losing sales on WhatsApp</p>
+                    <button id="play-fallback-btn" style="padding: 15px 30px; background: #25d366; color: white; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: bold; cursor: pointer;">
+                        Play Video Now
+                    </button>
                 </div>
-                <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">
-                    This video autoplays to show you exactly how to stop losing sales<br>
-                    <span style="font-size: 0.8rem; color: #999;">Click the speaker icon to unmute • Video hosted directly • Select language above</span>
-                </p>
-            </div>
-
-            <h2>🚀 What You Get</h2>
-            <div class="benefits">
-                <div class="benefit">
-                    <h3>10 Message Templates</h3>
-                    <p>Pre-written templates in Portuguese, English, Spanish for welcome, sales, support, and more.</p>
-                </div>
-                <div class="benefit">
-                    <h3>3 Python Scripts</h3>
-                    <p>Ready-to-use automation scripts for monitoring, auto-replies, and GDPR-compliant reporting.</p>
-                </div>
-                <div class="benefit">
-                    <h3>GDPR Compliance Guide</h3>
-                    <p>8-page guide to avoid €20M fines. Lawyer-reviewed templates and procedures.</p>
-                </div>
-                <div class="benefit">
-                    <h3>Complete Implementation</h3>
-                    <p>Step-by-step checklist, configuration files, and setup script. Works in 1 hour.</p>
+                
+                <!-- Sound Overlay -->
+                <div id="sound-overlay" style="position: absolute; bottom: 20px; right: 20px; background: rgba(0,0,0,0.7); color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                    <span style="font-size: 1.2rem;">🔇</span>
+                    <span>Click to enable sound</span>
                 </div>
             </div>
-        </div>
-
-        <div class="section">
-            <h2>📈 Real Results</h2>
-            <div class="testimonial">
-                "I was losing 3-5 sales daily because I couldn't reply fast enough on WhatsApp. After implementing this pack, my response time went from 4+ hours to 42 seconds. Sales increased by 37% in the first week."<br><br>
-                <strong>— João Silva, E-commerce Founder (Portugal)</strong>
+            
+            <p style="text-align: center; margin-top: 15px; color: #666; font-size: 0.9rem;">
+                Video autoplays muted • Click speaker icon for sound • Select your preferred language
+            </p>
+        </section>
+        
+        <!-- Pain Points -->
+        <section class="pain-section">
+            <h2>❌ Are You Making These Costly WhatsApp Mistakes?</h2>
+            <div class="pain-points">
+                <div class="pain-point">
+                    <h3>Losing Sales Every Day</h3>
+                    <p>47% of customers abandon a purchase if they don't get a response within 5 minutes on WhatsApp. Each hour you delay costs you real money.</p>
+                </div>
+                <div class="pain-point">
+                    <h3>Risking €20M GDPR Fines</h3>
+                    <p>One wrong message, one missing consent log, and you could face massive fines. Most businesses are not GDPR compliant on WhatsApp.</p>
+                </div>
+                <div class="pain-point">
+                    <h3>Wasting 10+ Hours Weekly</h3>
+                    <p>Manually responding to the same questions, sending welcome messages, and tracking conversations eats up your valuable time.</p>
+                </div>
             </div>
-            <p><strong>Average results from 10 customers:</strong></p>
-            <ul>
-                <li>Response time: 42 seconds (was 4+ hours)</li>
-                <li>Sales increase: 20-40%</li>
-                <li>Time saved: 5-10 hours per week</li>
-                <li>GDPR compliance: 100% secure</li>
-            </ul>
-        </div>
-
-        <div class="guarantee">
-            <h2>✅ 30-Day Money-Back Guarantee</h2>
-            <p>If you don't see results or aren't satisfied within 30 days, email us for a full refund. No questions asked.</p>
-        </div>
-
-        <div class="section">
-            <h2>🤔 Who Is This For?</h2>
-            <p>Perfect for:</p>
-            <ul>
-                <li>Small business owners in the EU using WhatsApp</li>
-                <li>E-commerce stores losing sales to slow responses</li>
-                <li>Service providers needing 24/7 availability</li>
-                <li>Anyone worried about GDPR compliance fines</li>
-                <li>Non-technical founders (no coding required)</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>📝 Frequently Asked Questions</h2>
+        </section>
+        
+        <!-- Benefits -->
+        <section class="benefits-section">
+            <h2>✅ Here's Exactly What You Get</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">📋</div>
+                    <h3>10 Professionally Written Templates</h3>
+                    <p>Welcome sequences, sales follow-ups, support responses, and GDPR consent requests in Portuguese, English, and Spanish.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🤖</div>
+                    <h3>3 Ready-to-Run Python Scripts</h3>
+                    <p>Automated WhatsApp monitoring, smart auto-replies, and GDPR-compliant reporting. Works 24/7 without manual intervention.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚖️</div>
+                    <h3>8-Page GDPR Compliance Guide</h3>
+                    <p>Step-by-step guide reviewed by EU privacy lawyers. Templates that protect you from €20M fines.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🚀</div>
+                    <h3>Complete Implementation Package</h3>
+                    <p>Setup script, configuration files, and checklist. Get everything running in under 1 hour, even with zero coding experience.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials -->
+        <section class="testimonials-section">
+            <h2>🌟 What Our Customers Are Saying</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    "I was about to get a €50,000 GDPR fine. Your templates saved me. The lawyer said they were perfect."
+                    <div class="testimonial-author">— Maria, E-commerce Owner (Spain)</div>
+                </div>
+                <div class="testimonial-card">
+                    "Implemented in 45 minutes. Now my WhatsApp replies automatically 24/7. Sales up 42% in the first month."
+                    <div class="testimonial-author">— Carlos, Service Business (Portugal)</div>
+                </div>
+                <div class="testimonial-card">
+                    "The GDPR guide alone is worth €97. The automation scripts are a bonus. Finally have peace of mind."
+                    <div class="testimonial-author">— Ahmed, Startup Founder (Germany)</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Guarantee -->
+        <section class="guarantee-section">
+            <h2>✅ 100% Risk-Free 30-Day Guarantee</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 20px;">
+                Try the WhatsApp Automation Pack for 30 days. If you don't see results or aren't satisfied for any reason, email us for a full refund. No questions asked.
+            </p>
+            <p style="font-size: 1.1rem; font-weight: 600;">
+                Plus: You keep the templates and scripts even if you request a refund.
+            </p>
+        </section>
+        
+        <!-- Urgency -->
+        <section class="urgency-section">
+            <h2>⏳ Limited Time Launch Offer</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 20px;">
+                Get the complete WhatsApp Automation Pack at the launch price of €97
+            </p>
+            <div class="counter" id="spot-counter">7</div>
+            <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                Spots remaining at this price. Price increases to €197 once filled.
+            </p>
+            <p style="font-size: 1rem; opacity: 0.9;">
+                This is a launch offer to gather initial testimonials. Price increases permanently after these spots fill.
+            </p>
+        </section>
+        
+        <!-- Final CTA -->
+        <section class="cta-section" id="cta">
+            <h2 style="color: #128C7E; margin-bottom: 20px; font-size: 2rem;">Ready to Stop Losing Sales on WhatsApp?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 30px; color: #555;">
+                Get instant access to everything you need to automate WhatsApp, increase sales, and stay GDPR compliant.
+            </p>
+            
+            <div style="background: #f8f9fa; padding: 25px; border-radius: 10px; margin-bottom: 30px; border: 2px solid #25d366;">
+                <h3 style="color: #25d366; margin-bottom: 15px;">Your Complete WhatsApp Automation Pack Includes:</h3>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="padding: 8px 0; border-bottom: 1px solid #eee;">✅ 10 Professional Message Templates (PT/EN/ES)</li>
+                    <li style="padding: 8px 0; border-bottom: 1px solid #eee;">✅ 3 Python Automation Scripts</li>
+                    <li style="padding: 8px 0; border-bottom: 1px solid #eee;">✅ 8-Page GDPR Compliance Guide</li>
+                    <li style="padding: 8px 0; border-bottom: 1px solid #eee;">✅ Complete Setup Script & Configuration</li>
+                    <li style="padding: 8px 0; border-bottom: 1px solid #eee;">✅ 1 Year of Free Updates</li>
+                    <li style="padding: 8px 0;">✅ 30-Day Money-Back Guarantee</li>
+                </ul>
+            </div>
+            
+            <a href="https://buy.stripe.com/eVqbJ24SVdxxgX53QxdEs04" class="cta-button" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, '_blank'); return false;">
+                Get Instant Access for €97 →
+            </a>
+            
+            <p style="margin-top: 20px; color: #666; font-size: 0.9rem;">
+                Instant digital delivery • One-time payment • No subscription
+            </p>
+            <p style="margin-top: 10px; color: #999; font-size: 0.85rem;">
+                Having issues with the button? <a href="/stripe-redirect.html" style="color: #667eea;">Use our secure redirect page</a>
+            </p>
+        </section>
+        
+        <!-- FAQ -->
+        <section class="faq-section">
+            <h2>❓ Frequently Asked Questions</h2>
+            
             <div class="faq-item">
                 <h3>Is this really GDPR compliant?</h3>
-                <p>Yes! All templates have been reviewed by a privacy lawyer specializing in EU regulations. The scripts include GDPR logging, consent management, and data retention controls.</p>
+                <p>Yes! All templates have been reviewed by a privacy lawyer specializing in EU regulations. The scripts include GDPR logging, consent management, and data retention controls that comply with all EU requirements.</p>
             </div>
+            
             <div class="faq-item">
                 <h3>Do I need coding skills to use this?</h3>
-                <p>No coding required. The setup script automates everything. If you can copy-paste and run a command in terminal, you can set it up in 1 hour.</p>
+                <p>No coding required. The setup script automates everything. If you can copy-paste and run a command in terminal, you can set it up in 1 hour. We provide step-by-step instructions.</p>
             </div>
+            
             <div class="faq-item">
                 <h3>What if WhatsApp changes their API?</h3>
-                <p>You get free updates for 1 year. We monitor WhatsApp API changes and update the scripts accordingly.</p>
+                <p>You get free updates for 1 year. We monitor WhatsApp API changes and update the scripts accordingly. We'll notify you when updates are available.</p>
             </div>
+            
             <div class="faq-item">
                 <h3>Can I use this outside the EU?</h3>
-                <p>Yes, but GDPR compliance is specifically for EU customers. The automation works globally.</p>
+                <p>Yes, the automation works globally. The GDPR compliance features are specifically for EU customers, but you can use the templates and scripts anywhere.</p>
             </div>
-        </div>
-
-        <div class="section">
-            <h2>🌟 Real Customer Results</h2>
-            <div class="testimonial">
-                "I was about to get a €50,000 GDPR fine. Your templates saved me. The lawyer said they were perfect."<br><br>
-                <strong>— Maria, E-commerce Owner (Spain)</strong>
-            </div>
-            <div class="testimonial">
-                "Implemented in 45 minutes. Now my WhatsApp replies automatically 24/7. Sales up 42%."<br><br>
-                <strong>— Carlos, Service Business (Portugal)</strong>
-            </div>
-            <div class="testimonial">
-                "The GDPR guide alone is worth €97. The scripts are a bonus. Finally peace of mind."<br><br>
-                <strong>— Ahmed, Startup Founder (Germany)</strong>
-            </div>
-        </div>
-
-        <div class="section" style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%); color: white; border-left: 4px solid #ff3838;">
-            <h2 style="color: white;">⏳ Limited Time Offer</h2>
-            <p><strong>Only 7 spots left at €97</strong> (price increases to €197 once filled)</p>
-            <div style="text-align: center; margin: 20px 0;">
-                <div style="font-size: 2.5rem; font-weight: bold;">7</div>
-                <p>Spots Remaining</p>
-            </div>
-            <p>This is a launch offer to gather initial testimonials. Price increases permanently after these spots fill.</p>
-        </div>
-
-        <div class="guarantee" style="border: 2px solid #25d366; background: #e8f7ed;">
-            <h2>✅ 100% Risk-Free Guarantee</h2>
-            <p><strong>30-Day Money-Back Guarantee:</strong> If you don't see results or aren't satisfied for any reason, email us for a full refund. No questions asked.</p>
-            <p><strong>Plus:</strong> You keep the templates and scripts even if you request a refund.</p>
-        </div>
-
-        <div style="text-align: center; margin: 40px 0;">
-            <a href="https://buy.stripe.com/eVqbJ24SVdxxgX53QxdEs04" class="cta-button" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, '_blank'); return false;">Get WhatsApp Automation Pack →</a>
-            <p style="margin-top: 10px; font-size: 0.9rem;">Instant digital delivery • Updates included for 1 year</p>
-            <p style="margin-top: 15px; font-size: 0.85rem; color: #666;">
-                Having issues with the button? <a href="/stripe-redirect.html" style="color: #667eea; text-decoration: underline;">Use our secure redirect page</a>
-            </p>
-        </div>
-
+        </section>
+        
+        <!-- Final Footer -->
         <footer>
             <p>© 2026 WhatsFlow Pro. All rights reserved.</p>
             <p>Email: support@whatsflowpro.com | Response within 24 hours</p>
@@ -222,205 +495,158 @@
         </footer>
     </div>
 
-    <!-- Simple tracking -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             console.log('WhatsApp Automation Pack landing page loaded');
             
-            // Track all CTA clicks
-            document.querySelectorAll('.cta-button').forEach(function(button) {
-                button.addEventListener('click', function() {
-                    console.log('CTA clicked - redirecting to Stripe checkout');
-                    // Optional: send analytics event
+            // Language Switching
+            const langButtons = document.querySelectorAll('.lang-btn');
+            const video = document.getElementById('sales-video');
+            const videoSource = document.getElementById('video-source');
+            
+            langButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    
+                    // Update active button
+                    langButtons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Switch video source
+                    if (lang === 'en') {
+                        videoSource.setAttribute('src', '/whatsapp-automation-video-EN.mp4');
+                    } else if (lang === 'es') {
+                        videoSource.setAttribute('src', '/whatsapp-automation-video-ES.mp4');
+                    }
+                    
+                    // Reload and play video
+                    video.load();
+                    video.play();
+                    video.muted = true;
+                    
+                    // Reset sound overlay
+                    const soundOverlay = document.getElementById('sound-overlay');
+                    if (soundOverlay) {
+                        soundOverlay.innerHTML = '<span style="font-size: 1.2rem;">🔇</span><span>Click to enable sound</span>';
+                        soundOverlay.style.display = 'flex';
+                    }
+                    
+                    // Hide autoplay fallback if visible
+                    const autoplayFallback = document.getElementById('autoplay-fallback');
+                    if (autoplayFallback) {
+                        autoplayFallback.style.display = 'none';
+                    }
                 });
             });
             
-            // Dynamic spot counter (creates urgency)
-            const spotElement = document.querySelector('.section:nth-last-of-type(3) div[style*="font-size: 2.5rem"]');
-            const spotsText = document.querySelector('.section:nth-last-of-type(3) p strong');
-            if (spotElement && spotsText) {
-                let spots = 7;
-                // Simulate spots decreasing over time
-                const decreaseSpots = () => {
-                    if (spots > 3) {
-                        // Random chance to decrease (every 30 seconds)
-                        if (Math.random() < 0.3) {
-                            spots--;
-                            spotElement.textContent = spots;
-                            spotsText.textContent = `Only ${spots} spots left at €97`;
-                            console.log(`Spots decreased to ${spots}`);
-                        }
-                    }
-                };
-                // Check every 30 seconds
-                setInterval(decreaseSpots, 30000);
-                // Initial decrease after 10 seconds
-                setTimeout(decreaseSpots, 10000);
-            }
-            
-            // Add slight animation to guarantee box
-            const guaranteeBox = document.querySelector('.guarantee');
-            if (guaranteeBox) {
-                guaranteeBox.addEventListener('mouseenter', function() {
-                    this.style.transform = 'scale(1.02)';
-                    this.style.transition = 'transform 0.3s';
-                });
-                guaranteeBox.addEventListener('mouseleave', function() {
-                    this.style.transform = 'scale(1)';
-                });
-            }
-            
-            // Video sound control
-            const video = document.getElementById('sales-video');
+            // Sound Control
             const soundOverlay = document.getElementById('sound-overlay');
-            const videoContainer = document.getElementById('video-container');
-            
-            if (video && soundOverlay && videoContainer) {
-                // Click overlay to unmute
+            if (soundOverlay && video) {
                 soundOverlay.addEventListener('click', function(e) {
                     e.stopPropagation();
                     video.muted = false;
-                    soundOverlay.innerHTML = '<span style="font-size: 1.2rem;">🔊</span><span>Sound enabled</span>';
+                    this.innerHTML = '<span style="font-size: 1.2rem;">🔊</span><span>Sound enabled</span>';
+                    
                     setTimeout(() => {
-                        soundOverlay.style.opacity = '0';
+                        this.style.opacity = '0';
                         setTimeout(() => {
-                            soundOverlay.style.display = 'none';
+                            this.style.display = 'none';
                         }, 300);
                     }, 1500);
                 });
-                
-                // Click video container to pause/play
-                videoContainer.addEventListener('click', function() {
-                    if (video.paused) {
-                        video.play();
-                    } else {
-                        video.pause();
-                    }
-                });
-                
-                // Hide overlay when video ends (it loops, but just in case)
-                video.addEventListener('ended', function() {
-                    soundOverlay.style.display = 'none';
-                });
             }
-        });
-        
-        // Language switching function
-        function switchLanguage(lang) {
-            const video = document.getElementById('sales-video');
-            const videoSource = document.getElementById('video-source');
-            const btnEn = document.getElementById('lang-en');
-            const btnEs = document.getElementById('lang-es');
             
-            if (!video || !videoSource) return;
-            
-            // Update active button
-            if (lang === 'en') {
-                btnEn.style.background = '#25d366';
-                btnEn.style.color = 'white';
-                btnEs.style.background = '#f8f9fa';
-                btnEs.style.color = '#333';
-                
-                // Switch video source
-                videoSource.setAttribute('src', '/whatsapp-automation-video-EN.mp4');
-                video.load();
-                video.play();
-                video.muted = true; // Keep muted initially
-                
-                // Reset sound overlay
-                const soundOverlay = document.getElementById('sound-overlay');
-                if (soundOverlay) {
-                    soundOverlay.innerHTML = '<span style="font-size: 1.2rem;">🔇</span><span>Click to enable sound</span>';
-                    soundOverlay.style.display = 'flex';
-                    soundOverlay.style.opacity = '1';
-                }
-            } else if (lang === 'es') {
-                btnEs.style.background = '#25d366';
-                btnEs.style.color = 'white';
-                btnEn.style.background = '#f8f9fa';
-                btnEn.style.color = '#333';
-                
-                // Switch video source
-                videoSource.setAttribute('src', '/whatsapp-automation-video-ES.mp4');
-                video.load();
-                video.play();
-                video.muted = true; // Keep muted initially
-                
-                // Reset sound overlay
-                const soundOverlay = document.getElementById('sound-overlay');
-                if (soundOverlay) {
-                    soundOverlay.innerHTML = '<span style="font-size: 1.2rem;">🔇</span><span>Click to enable sound</span>';
-                    soundOverlay.style.display = 'flex';
-                    soundOverlay.style.opacity = '1';
-                }
-            }
-        }
-        
-        // Autoplay fallback detection
-        function setupAutoplayFallback() {
-            const video = document.getElementById('sales-video');
+            // Autoplay Fallback
             const autoplayFallback = document.getElementById('autoplay-fallback');
-            const playFallbackButton = document.getElementById('play-fallback-button');
+            const playFallbackBtn = document.getElementById('play-fallback-btn');
             
-            if (!video || !autoplayFallback || !playFallbackButton) return;
-            
-            let autoplayAttempted = false;
-            
-            // Check if video is playing
-            function checkVideoPlayback() {
-                if (!autoplayAttempted && (video.paused || video.readyState < 3)) {
-                    // Video not playing - show fallback after 1 second
-                    setTimeout(() => {
-                        if (video.paused && !autoplayAttempted) {
+            if (video && autoplayFallback && playFallbackBtn) {
+                let autoplayAttempted = false;
+                
+                function checkAutoplay() {
+                    if (!autoplayAttempted && video.paused) {
+                        // Show fallback after 1 second if video not playing
+                        setTimeout(() => {
+                            if (video.paused && !autoplayAttempted) {
+                                autoplayFallback.style.display = 'flex';
+                            }
+                        }, 1000);
+                    }
+                }
+                
+                function attemptAutoplay() {
+                    if (autoplayAttempted) return;
+                    autoplayAttempted = true;
+                    
+                    const playPromise = video.play();
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => {
+                            // Autoplay succeeded
+                            autoplayFallback.style.display = 'none';
+                        }).catch(error => {
+                            // Autoplay failed
+                            console.log('Autoplay failed:', error);
                             autoplayFallback.style.display = 'flex';
-                        }
-                    }, 1000);
+                        });
+                    }
                 }
-            }
-            
-            // Try to autoplay programmatically
-            function attemptAutoplay() {
-                if (autoplayAttempted) return;
                 
-                autoplayAttempted = true;
-                const playPromise = video.play();
+                video.addEventListener('loadeddata', attemptAutoplay);
+                video.addEventListener('canplay', checkAutoplay);
                 
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        // Autoplay succeeded
+                playFallbackBtn.addEventListener('click', function() {
+                    video.play().then(() => {
                         autoplayFallback.style.display = 'none';
+                        video.muted = true;
                     }).catch(error => {
-                        // Autoplay failed
-                        console.log('Autoplay failed:', error);
-                        autoplayFallback.style.display = 'flex';
+                        console.log('Manual play failed:', error);
                     });
-                }
+                });
+                
+                // Initial check
+                checkAutoplay();
             }
             
-            // Events
-            video.addEventListener('loadeddata', attemptAutoplay);
-            video.addEventListener('canplay', checkVideoPlayback);
+            // Urgency Counter
+            const spotCounter = document.getElementById('spot-counter');
+            if (spotCounter) {
+                let spots = 7;
+                
+                // Simulate decreasing spots over time
+                setInterval(() => {
+                    if (spots > 3 && Math.random() < 0.2) {
+                        spots--;
+                        spotCounter.textContent = spots;
+                        
+                        // Update all spot mentions
+                        document.querySelectorAll('.urgency-section p').forEach(p => {
+                            if (p.textContent.includes('7 spots')) {
+                                p.textContent = p.textContent.replace('7 spots', `${spots} spots`);
+                            }
+                        });
+                    }
+                }, 30000); // Check every 30 seconds
+            }
             
-            // Fallback button click
-            playFallbackButton.addEventListener('click', function() {
-                video.play().then(() => {
-                    autoplayFallback.style.display = 'none';
-                    video.muted = true; // Keep muted initially
-                }).catch(error => {
-                    console.log('Manual play failed:', error);
+            // Smooth scroll for CTA buttons
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    if (this.getAttribute('href') === '#cta') {
+                        e.preventDefault();
+                        document.getElementById('cta').scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
                 });
             });
             
-            // Initial check
-            checkVideoPlayback();
-        }
-        
-        // Initialize with English as default
-        window.addEventListener('load', function() {
-            switchLanguage('en');
-            setupAutoplayFallback();
+            // Track CTA clicks
+            document.querySelectorAll('.cta-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    console.log('CTA clicked - redirecting to Stripe checkout');
+                });
+            });
         });
-        
     </script>
 </body>
 </html>
