@@ -22,6 +22,10 @@
     {
       "src": "/es",
       "dest": "/whatsapp-automation-landing-es.html"
+    },
+    {
+      "src": "/privacy",
+      "dest": "/privacy.html"
     }
   ],
   "headers": [
