@@ -18,6 +18,10 @@
     {
       "src": "/",
       "dest": "/whatsapp-automation-landing.html"
+    },
+    {
+      "src": "/es",
+      "dest": "/whatsapp-automation-landing-es.html"
     }
   ],
   "headers": [

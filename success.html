@@ -4,6 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Successful - WhatsApp Automation Pack</title>
+
+    <!-- Meta Pixel Code — Purchase Event -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '975646718220259');
+    fbq('track', 'PageView');
+    fbq('track', 'Purchase', {
+        value: 97,
+        currency: 'EUR',
+        content_name: 'WhatsApp Automation Pack',
+        content_ids: ['wpp-pack-97'],
+        content_type: 'product',
+        num_items: 1
+    });
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=975646718220259&ev=Purchase&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
         .container { text-align: center; max-width: 600px; padding: 40px; background: white; border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }

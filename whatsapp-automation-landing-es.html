@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Pack Automatización WhatsApp | Deja de Perder Ventas (RGPD Compliant)</title>
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '975646718220259');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=975646718220259&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; line-height: 1.6; color: #333; background: #f8f9fa; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+
+        .hero {
+            text-align: center;
+            padding: 50px 0 30px;
+            background: linear-gradient(135deg, #25d366 0%, #128C7E 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.2);
+        }
+        .hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
+        .hero .subtitle { font-size: 1.4rem; opacity: 0.95; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .price-badge {
+            display: inline-block;
+            background: white;
+            color: #25d366;
+            padding: 15px 30px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .old-price { text-decoration: line-through; color: #999; font-size: 1.2rem; margin-right: 10px; }
+        .current-price { font-size: 2.5rem; font-weight: 800; color: #128C7E; }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF6B35 0%, #FF4500 100%);
+            color: white;
+            padding: 20px 40px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255, 107, 53, 0.5); }
+        .video-section { background: white; border-radius: 15px; padding: 40px; margin-bottom: 40px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        .video-section h2 { text-align: center; font-size: 1.8rem; margin-bottom: 20px; color: #128C7E; }
+        .video-container { position: relative; width: 100%; max-width: 700px; margin: 0 auto; border-radius: 10px; overflow: hidden; background: #000; aspect-ratio: 16/9; }
+        .video-container video { width: 100%; height: 100%; object-fit: cover; }
+        .pain-section { background: white; border-radius: 15px; padding: 40px; margin-bottom: 40px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        .pain-section h2 { text-align: center; font-size: 1.8rem; color: #e74c3c; margin-bottom: 30px; }
+        .pain-points { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .pain-point { background: #fff5f5; border: 2px solid #fed7d7; border-radius: 10px; padding: 25px; }
+        .pain-point h3 { color: #e74c3c; margin-bottom: 10px; font-size: 1.1rem; }
+        .benefits-section { background: white; border-radius: 15px; padding: 40px; margin-bottom: 40px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        .benefits-section h2 { text-align: center; font-size: 1.8rem; color: #128C7E; margin-bottom: 30px; }
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .benefit-card { text-align: center; padding: 25px; background: #f0fdf4; border-radius: 10px; border: 1px solid #bbf7d0; }
+        .benefit-icon { font-size: 2.5rem; margin-bottom: 15px; }
+        .benefit-card h3 { color: #128C7E; margin-bottom: 10px; font-size: 1rem; }
+        .testimonials-section { background: white; border-radius: 15px; padding: 40px; margin-bottom: 40px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        .testimonials-section h2 { text-align: center; font-size: 1.8rem; color: #128C7E; margin-bottom: 30px; }
+        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .testimonial-card { background: #f8f9fa; border-left: 4px solid #25d366; padding: 25px; border-radius: 0 10px 10px 0; font-style: italic; font-size: 1.05rem; }
+        .testimonial-author { margin-top: 15px; font-style: normal; font-weight: 700; color: #128C7E; font-size: 0.95rem; }
+        .guarantee-section { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 15px; padding: 40px; margin-bottom: 40px; text-align: center; }
+        .guarantee-section h2 { font-size: 1.8rem; margin-bottom: 20px; }
+        .urgency-section { background: linear-gradient(135deg, #ff6b35 0%, #ff4500 100%); color: white; border-radius: 15px; padding: 40px; margin-bottom: 40px; text-align: center; }
+        .urgency-section h2 { font-size: 1.8rem; margin-bottom: 20px; }
+        .counter { font-size: 4rem; font-weight: 800; margin: 20px 0; }
+        .cta-section { background: white; border-radius: 15px; padding: 50px 40px; margin-bottom: 40px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 3px solid #25d366; }
+        .faq-section { background: white; border-radius: 15px; padding: 40px; margin-bottom: 40px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        .faq-section h2 { text-align: center; font-size: 1.8rem; color: #128C7E; margin-bottom: 30px; }
+        .faq-item { margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid #eee; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-item h3 { color: #128C7E; margin-bottom: 10px; font-size: 1.1rem; }
+        footer { text-align: center; padding: 30px; color: #999; font-size: 0.9rem; }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .current-price { font-size: 2rem; }
+            .cta-button { padding: 16px 30px; font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- Hero -->
+        <header class="hero">
+            <h1>Deja de Perder Ventas en WhatsApp</h1>
+            <p class="subtitle">Automatiza WhatsApp con cumplimiento RGPD completo. Responde en 42 segundos, ahorra 10+ horas/semana y aumenta tus ventas un 20-40%</p>
+
+            <div class="price-badge">
+                <span class="old-price">€197</span>
+                <span class="current-price">€97</span>
+            </div>
+            <p>Pago único • Actualizaciones de por vida • Garantía 30 días</p>
+
+            <a href="#cta" class="cta-button" style="margin-top: 30px;">
+                Acceso Inmediato Ahora →
+            </a>
+        </header>
+
+        <!-- Video -->
+        <section class="video-section" id="video">
+            <h2>🎬 Mira Este Vídeo de 2 Minutos</h2>
+            <p style="text-align: center; margin-bottom: 20px; color: #666; font-size: 1.1rem;">
+                Descubre exactamente cómo el Pack de Automatización WhatsApp resuelve tus problemas
+            </p>
+            <div class="video-container">
+                <video playsinline autoplay muted loop poster="/whatsapp-automation-video-poster.jpg">
+                    <source src="/whatsapp-automation-video-ES.mp4" type="video/mp4">
+                    Tu navegador no soporta vídeo HTML5.
+                </video>
+                <div id="sound-overlay" style="position: absolute; bottom: 20px; right: 20px; background: rgba(0,0,0,0.7); color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                    <span style="font-size: 1.2rem;">🔇</span>
+                    <span>Clic para activar sonido</span>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 15px; color: #666; font-size: 0.9rem;">
+                Vídeo en español • Clic en el altavoz para activar el sonido
+            </p>
+        </section>
+
+        <!-- Pain Points -->
+        <section class="pain-section">
+            <h2>❌ ¿Estás Cometiendo Estos Errores Costosos en WhatsApp?</h2>
+            <div class="pain-points">
+                <div class="pain-point">
+                    <h3>Perdiendo Ventas Cada Día</h3>
+                    <p>El 47% de los clientes abandona una compra si no reciben respuesta en 5 minutos por WhatsApp. Cada hora de retraso te cuesta dinero real.</p>
+                </div>
+                <div class="pain-point">
+                    <h3>Arriesgando Multas RGPD de €20M</h3>
+                    <p>Un mensaje incorrecto, un registro de consentimiento que falta, y podrías enfrentar multas masivas. La mayoría de empresas en España no cumplen el RGPD en WhatsApp.</p>
+                </div>
+                <div class="pain-point">
+                    <h3>Desperdiciando 10+ Horas a la Semana</h3>
+                    <p>Responder manualmente las mismas preguntas, enviar mensajes de bienvenida y hacer seguimiento consume tu tiempo valioso.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits -->
+        <section class="benefits-section">
+            <h2>✅ Exactamente Lo Que Obtienes</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">📋</div>
+                    <h3>10 Plantillas Profesionales</h3>
+                    <p>Secuencias de bienvenida, seguimientos de ventas, respuestas de soporte y solicitudes de consentimiento RGPD en español, inglés y portugués.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🤖</div>
+                    <h3>3 Scripts Python Listos para Usar</h3>
+                    <p>Monitorización automática de WhatsApp, respuestas inteligentes y reportes conformes con RGPD. Funciona 24/7 sin intervención manual.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚖️</div>
+                    <h3>Guía RGPD de 8 Páginas</h3>
+                    <p>Guía paso a paso revisada por abogados de privacidad de la UE. Plantillas que te protegen de multas de €20M.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🚀</div>
+                    <h3>Paquete de Implementación Completo</h3>
+                    <p>Script de configuración, archivos de configuración y lista de verificación. Todo funcionando en menos de 1 hora, sin experiencia en programación.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials-section">
+            <h2>🌟 Lo Que Dicen Nuestros Clientes</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    "Estaba a punto de recibir una multa RGPD de €50.000. Tus plantillas me salvaron. El abogado dijo que eran perfectas."
+                    <div class="testimonial-author">— María, Propietaria E-commerce (España)</div>
+                </div>
+                <div class="testimonial-card">
+                    "Lo implementé en 45 minutos. Ahora mi WhatsApp responde automáticamente 24/7. Las ventas subieron un 42% el primer mes."
+                    <div class="testimonial-author">— Carlos, Negocio de Servicios (Portugal)</div>
+                </div>
+                <div class="testimonial-card">
+                    "La guía RGPD sola ya vale €97. Los scripts de automatización son un regalo extra. Por fin tengo tranquilidad."
+                    <div class="testimonial-author">— Ahmed, Fundador Startup (Alemania)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Guarantee -->
+        <section class="guarantee-section">
+            <h2>✅ Garantía 100% Sin Riesgo — 30 Días</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 20px;">
+                Prueba el Pack de Automatización WhatsApp durante 30 días. Si no ves resultados o no estás satisfecho por cualquier motivo, escríbenos y te hacemos un reembolso completo. Sin preguntas.
+            </p>
+            <p style="font-size: 1.1rem; font-weight: 600;">
+                Además: te quedas con las plantillas y scripts aunque solicites el reembolso.
+            </p>
+        </section>
+
+        <!-- Urgency -->
+        <section class="urgency-section">
+            <h2>⏳ Oferta de Lanzamiento por Tiempo Limitado</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 20px;">
+                Consigue el Pack completo al precio de lanzamiento de €97
+            </p>
+            <div class="counter" id="spot-counter">7</div>
+            <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                Plazas restantes a este precio. El precio sube a €197 cuando se llenen.
+            </p>
+            <p style="font-size: 1rem; opacity: 0.9;">
+                Esta es una oferta de lanzamiento para reunir testimonios iniciales. El precio sube permanentemente después.
+            </p>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="cta-section" id="cta">
+            <h2 style="color: #128C7E; margin-bottom: 20px; font-size: 2rem;">¿Listo para Dejar de Perder Ventas en WhatsApp?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 30px; color: #555;">
+                Obtén acceso inmediato a todo lo que necesitas para automatizar WhatsApp, aumentar ventas y cumplir con el RGPD.
+            </p>
+
+            <div style="background: #f8f9fa; padding: 25px; border-radius: 10px; margin-bottom: 30px; border: 2px solid #25d366;">
+                <h3 style="color: #25d366; margin-bottom: 15px;">Tu Pack Completo de Automatización WhatsApp Incluye:</h3>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="padding: 8px 0; border-bottom: 1px solid #eee;">✅ 10 Plantillas de Mensajes Profesionales (ES/EN/PT)</li>
+                    <li style="padding: 8px 0; border-bottom: 1px solid #eee;">✅ 3 Scripts Python de Automatización</li>
+                    <li style="padding: 8px 0; border-bottom: 1px solid #eee;">✅ Guía de Cumplimiento RGPD de 8 Páginas</li>
+                    <li style="padding: 8px 0; border-bottom: 1px solid #eee;">✅ Script de Configuración Completo</li>
+                    <li style="padding: 8px 0; border-bottom: 1px solid #eee;">✅ 1 Año de Actualizaciones Gratuitas</li>
+                    <li style="padding: 8px 0;">✅ Garantía de Devolución 30 Días</li>
+                </ul>
+            </div>
+
+            <a href="https://buy.stripe.com/eVqbJ24SVdxxgX53QxdEs04" class="cta-button" target="_blank" rel="noopener noreferrer" id="main-cta">
+                Acceso Inmediato por €97 →
+            </a>
+
+            <p style="margin-top: 20px; color: #666; font-size: 0.9rem;">
+                Entrega digital inmediata • Pago único • Sin suscripción
+            </p>
+            <p style="margin-top: 10px; color: #999; font-size: 0.85rem;">
+                ¿Problemas con el botón? <a href="/stripe-redirect.html" style="color: #667eea;">Usa nuestra página de redirección segura</a>
+            </p>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq-section">
+            <h2>❓ Preguntas Frecuentes</h2>
+            <div class="faq-item">
+                <h3>¿Realmente cumple con el RGPD?</h3>
+                <p>¡Sí! Todas las plantillas han sido revisadas por un abogado especializado en regulaciones de privacidad de la UE. Los scripts incluyen registro RGPD, gestión de consentimiento y controles de retención de datos que cumplen todos los requisitos europeos.</p>
+            </div>
+            <div class="faq-item">
+                <h3>¿Necesito saber programación?</h3>
+                <p>No se requieren conocimientos de programación. El script de configuración automatiza todo. Si puedes copiar-pegar y ejecutar un comando en el terminal, puedes configurarlo en 1 hora. Proporcionamos instrucciones paso a paso.</p>
+            </div>
+            <div class="faq-item">
+                <h3>¿Funciona con cualquier negocio?</h3>
+                <p>Sí. Las plantillas cubren e-commerce, servicios, consultoría, hostelería, inmobiliaria y más. Los scripts Python son configurables para cualquier tipo de negocio que use WhatsApp para ventas o soporte.</p>
+            </div>
+            <div class="faq-item">
+                <h3>¿Qué pasa si no me funciona?</h3>
+                <p>Tienes 30 días de garantía de devolución de dinero, sin preguntas. Y te quedas con todos los materiales de todas formas. Sin riesgo alguno.</p>
+            </div>
+            <div class="faq-item">
+                <h3>¿Cuánto tarda la entrega?</h3>
+                <p>Inmediato. Nada de esperar. En cuanto confirmes el pago, recibes el enlace de descarga. Todo el pack en segundos.</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 WhatsApp Automation Pack • <a href="/privacy-policy.html" style="color: #25d366;">Política de Privacidad</a></p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">
+                WhatsApp es una marca registrada de Meta Platforms, Inc. Este producto no está afiliado, patrocinado ni respaldado por Meta.
+            </p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Sound toggle for video
+        const soundOverlay = document.getElementById('sound-overlay');
+        const video = document.querySelector('video');
+        if (soundOverlay && video) {
+            soundOverlay.addEventListener('click', function() {
+                video.muted = !video.muted;
+                soundOverlay.innerHTML = video.muted
+                    ? '<span style="font-size:1.2rem">🔇</span><span>Clic para activar sonido</span>'
+                    : '<span style="font-size:1.2rem">🔊</span><span>Sonido activado</span>';
+            });
+        }
+
+        // Urgency counter (cosmetic)
+        let spots = 7;
+        setInterval(() => {
+            if (spots > 3 && Math.random() < 0.1) {
+                spots--;
+                const el = document.getElementById('spot-counter');
+                if (el) el.textContent = spots;
+            }
+        }, 30000);
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#cta') {
+                    e.preventDefault();
+                    document.getElementById('cta').scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Meta Pixel — InitiateCheckout on CTA click
+        document.querySelectorAll('.cta-button, #main-cta').forEach(button => {
+            button.addEventListener('click', function() {
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'InitiateCheckout', {
+                        value: 97,
+                        currency: 'EUR',
+                        content_name: 'Pack Automatización WhatsApp',
+                        content_ids: ['wpp-pack-97'],
+                        num_items: 1
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -7,6 +7,25 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>WhatsApp Automation Pack | Stop Losing Sales on WhatsApp (GDPR Compliant)</title>
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '975646718220259');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=975646718220259&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; line-height: 1.6; color: #333; background: #f8f9fa; }
@@ -640,10 +659,18 @@
                 });
             });
             
-            // Track CTA clicks
+            // Track CTA clicks — Meta Pixel InitiateCheckout
             document.querySelectorAll('.cta-button').forEach(button => {
                 button.addEventListener('click', function() {
-                    console.log('CTA clicked - redirecting to Stripe checkout');
+                    if (typeof fbq !== 'undefined') {
+                        fbq('track', 'InitiateCheckout', {
+                            value: 97,
+                            currency: 'EUR',
+                            content_name: 'WhatsApp Automation Pack',
+                            content_ids: ['wpp-pack-97'],
+                            num_items: 1
+                        });
+                    }
                 });
             });
         });
