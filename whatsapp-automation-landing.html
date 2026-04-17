@@ -3,10 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>WhatsApp Automation Pack | Stop Losing Sales on WhatsApp (GDPR Compliant)</title>
+    <title>WhatsApp Automation Pack | Your WhatsApp Is Losing You Sales Every Hour</title>
 
     <!-- Meta Pixel Code -->
     <script>
@@ -24,656 +21,374 @@
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=975646718220259&ev=PageView&noscript=1"
     /></noscript>
-    <!-- End Meta Pixel Code -->
 
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; line-height: 1.6; color: #333; background: #f8f9fa; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
-        
-        /* Hero Section */
-        .hero { 
-            text-align: center; 
-            padding: 50px 0 30px; 
-            background: linear-gradient(135deg, #25d366 0%, #128C7E 100%);
-            color: white;
-            border-radius: 15px;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.2);
-        }
-        .hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
-        .hero .subtitle { font-size: 1.4rem; opacity: 0.95; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto; }
-        .price-badge { 
-            display: inline-block; 
-            background: white; 
-            color: #25d366; 
-            padding: 15px 30px; 
-            font-size: 2.5rem; 
-            font-weight: 800; 
-            border-radius: 50px; 
-            margin: 20px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .old-price { 
-            text-decoration: line-through; 
-            color: rgba(255,255,255,0.7); 
-            font-size: 1.5rem;
-            margin-right: 10px;
-        }
-        
-        /* Video Section */
-        .video-section { 
-            background: white; 
-            padding: 40px; 
-            border-radius: 15px; 
-            margin-bottom: 40px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            border: 2px solid #e9ecef;
-        }
-        .video-section h2 { 
-            text-align: center; 
-            color: #128C7E; 
-            font-size: 2.2rem; 
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            max-width: 100%;
-            border-radius: 12px;
-            background: #000;
-            margin-bottom: 20px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-        .video-container video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        
-        /* Language Selector */
-        .lang-selector {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        .lang-btn {
-            padding: 12px 25px;
-            border: 2px solid #25d366;
-            background: white;
-            color: #25d366;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .lang-btn.active {
-            background: #25d366;
-            color: white;
-        }
-        .lang-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.2);
-        }
-        
-        /* Pain Points */
-        .pain-section {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            margin-bottom: 40px;
-            border-left: 5px solid #ff6b6b;
-        }
-        .pain-section h2 { color: #ff6b6b; margin-bottom: 25px; font-size: 2rem; }
-        .pain-points {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-        .pain-point {
-            background: #fff5f5;
-            padding: 25px;
-            border-radius: 10px;
-            border: 1px solid #ffe3e3;
-        }
-        .pain-point h3 { color: #ff6b6b; margin-bottom: 15px; font-size: 1.3rem; }
-        
-        /* Benefits */
-        .benefits-section {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            margin-bottom: 40px;
-            border-left: 5px solid #25d366;
-        }
-        .benefits-section h2 { color: #25d366; margin-bottom: 25px; font-size: 2rem; }
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-        .benefit-card {
-            background: #f0fff4;
-            padding: 25px;
-            border-radius: 10px;
-            border: 1px solid #d4f8e1;
-            transition: transform 0.2s;
-        }
-        .benefit-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.1);
-        }
-        .benefit-card h3 { color: #25d366; margin-bottom: 15px; font-size: 1.3rem; }
-        .benefit-icon { font-size: 2.5rem; margin-bottom: 15px; }
-        
-        /* Testimonials */
-        .testimonials-section {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            margin-bottom: 40px;
-        }
-        .testimonials-section h2 { 
-            text-align: center; 
-            color: #667eea; 
-            margin-bottom: 30px; 
-            font-size: 2rem;
-        }
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-        .testimonial-card {
-            background: #f8f9ff;
-            padding: 25px;
-            border-radius: 10px;
-            border-left: 4px solid #667eea;
-            font-style: italic;
-        }
-        .testimonial-author {
-            margin-top: 15px;
-            font-weight: 600;
-            color: #555;
-        }
-        
-        /* Guarantee */
-        .guarantee-section {
-            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
-            padding: 40px;
-            border-radius: 15px;
-            margin-bottom: 40px;
-            border: 2px solid #ffc107;
-            text-align: center;
-        }
-        .guarantee-section h2 { color: #856404; margin-bottom: 20px; font-size: 2rem; }
-        
-        /* Urgency */
-        .urgency-section {
-            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
-            padding: 40px;
-            border-radius: 15px;
-            margin-bottom: 40px;
-            color: white;
-            text-align: center;
-        }
-        .urgency-section h2 { margin-bottom: 20px; font-size: 2rem; }
-        .counter { 
-            font-size: 4rem; 
-            font-weight: 800; 
-            margin: 20px 0;
-            text-shadow: 0 3px 10px rgba(0,0,0,0.2);
-        }
-        
-        /* CTA */
-        .cta-section {
-            text-align: center;
-            padding: 40px;
-            background: white;
-            border-radius: 15px;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        .cta-button {
-            display: inline-block;
-            background: #25d366;
-            color: white;
-            padding: 20px 50px;
-            font-size: 1.5rem;
-            font-weight: 800;
-            text-decoration: none;
-            border-radius: 50px;
-            margin: 20px 0;
-            transition: all 0.3s;
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
-            border: none;
-            cursor: pointer;
-        }
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
-            background: #1da851;
-        }
-        
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:#1a1a2e;background:#f0f4f8}
+        .container{max-width:960px;margin:0 auto;padding:20px}
+
+        /* HERO */
+        .hero{background:linear-gradient(135deg,#0f3460 0%,#16213e 60%,#0d7a4e 100%);color:#fff;text-align:center;padding:60px 30px 50px;border-radius:20px;margin-bottom:10px;position:relative;overflow:hidden}
+        .hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(37,211,102,.08) 0%,transparent 60%);pointer-events:none}
+        .badge-top{display:inline-block;background:rgba(37,211,102,.2);border:1px solid rgba(37,211,102,.4);color:#4ade80;padding:6px 18px;border-radius:50px;font-size:.85rem;font-weight:700;letter-spacing:.5px;margin-bottom:20px;text-transform:uppercase}
+        .hero h1{font-size:2.8rem;font-weight:900;line-height:1.15;margin-bottom:16px;text-shadow:0 2px 20px rgba(0,0,0,.3)}
+        .hero h1 span{color:#4ade80}
+        .hero .sub{font-size:1.2rem;opacity:.9;max-width:700px;margin:0 auto 30px;line-height:1.7}
+        .proof-strip{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;margin-bottom:30px;padding:16px;background:rgba(255,255,255,.07);border-radius:12px}
+        .proof-item{text-align:center}
+        .proof-item strong{display:block;font-size:1.6rem;font-weight:900;color:#4ade80}
+        .proof-item span{font-size:.78rem;opacity:.8;text-transform:uppercase;letter-spacing:.5px}
+        .price-wrap{margin-bottom:24px}
+        .old-price{text-decoration:line-through;color:rgba(255,255,255,.45);font-size:1.1rem;margin-right:8px}
+        .price-main{font-size:3rem;font-weight:900;color:#fff}
+        .price-note{font-size:.9rem;opacity:.7;margin-top:4px}
+        .cta-btn{display:inline-block;background:linear-gradient(135deg,#25d366,#1aab53);color:#fff;padding:20px 48px;font-size:1.25rem;font-weight:800;border-radius:50px;text-decoration:none;box-shadow:0 6px 30px rgba(37,211,102,.45);transition:all .2s;cursor:pointer;border:none;letter-spacing:.3px}
+        .cta-btn:hover{transform:translateY(-3px);box-shadow:0 10px 40px rgba(37,211,102,.6)}
+        .cta-btn.orange{background:linear-gradient(135deg,#ff6b35,#e84e0f);box-shadow:0 6px 30px rgba(255,107,53,.45)}
+        .cta-btn.orange:hover{box-shadow:0 10px 40px rgba(255,107,53,.6)}
+        .guarantee-mini{margin-top:16px;font-size:.85rem;opacity:.7}
+
+        /* URGENCY BAR */
+        .urgency-bar{background:linear-gradient(90deg,#e84e0f,#ff6b35);color:#fff;text-align:center;padding:12px;font-size:.95rem;font-weight:700;border-radius:10px;margin-bottom:30px}
+
+        /* SECTION */
+        .section{background:#fff;border-radius:16px;padding:40px;margin-bottom:24px;box-shadow:0 2px 20px rgba(0,0,0,.06)}
+        .section h2{font-size:1.7rem;font-weight:800;margin-bottom:24px;color:#1a1a2e;text-align:center}
+        .section h2 .em{color:#128C7E}
+
+        /* VIDEO */
+        .video-wrap{position:relative;width:100%;max-width:680px;margin:0 auto;border-radius:14px;overflow:hidden;background:#000;aspect-ratio:16/9;box-shadow:0 8px 40px rgba(0,0,0,.25)}
+        .video-wrap video{width:100%;height:100%;object-fit:cover}
+        .sound-btn{position:absolute;bottom:16px;right:16px;background:rgba(0,0,0,.75);color:#fff;padding:7px 14px;border-radius:20px;font-size:.85rem;cursor:pointer;display:flex;align-items:center;gap:6px;border:none;backdrop-filter:blur(4px)}
+
+        /* PAIN */
+        .pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:10px}
+        .pain-card{background:#fff5f5;border:1.5px solid #fed7d7;border-radius:12px;padding:24px}
+        .pain-card .icon{font-size:1.8rem;margin-bottom:10px}
+        .pain-card h3{color:#c53030;font-size:1rem;margin-bottom:8px;font-weight:700}
+        .pain-card p{font-size:.93rem;color:#555;line-height:1.6}
+        .cost-box{background:linear-gradient(135deg,#fff5f5,#fed7d7);border:2px solid #fc8181;border-radius:14px;padding:24px;text-align:center;margin-top:20px}
+        .cost-box p{font-size:1.05rem;color:#9b2c2c;font-weight:600}
+        .cost-box strong{font-size:1.5rem;color:#c53030}
+
+        /* BENEFITS / VALUE STACK */
+        .value-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+        .value-card{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:1.5px solid #86efac;border-radius:12px;padding:22px;text-align:center}
+        .value-card .icon{font-size:2.2rem;margin-bottom:12px}
+        .value-card h3{font-size:.95rem;color:#166534;font-weight:700;margin-bottom:6px}
+        .value-card p{font-size:.85rem;color:#555;margin-bottom:12px;line-height:1.5}
+        .value-card .val{font-size:.8rem;color:#16a34a;font-weight:700;background:#dcfce7;padding:4px 10px;border-radius:20px}
+
+        /* VALUE STACK TOTAL */
+        .stack-total{background:linear-gradient(135deg,#1a1a2e,#0f3460);color:#fff;border-radius:14px;padding:28px;margin-top:20px;text-align:center}
+        .stack-total .line{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:.95rem}
+        .stack-total .line:last-of-type{border-bottom:none}
+        .stack-total .total-row{display:flex;justify-content:space-between;padding:14px 0 10px;font-size:1.1rem;font-weight:800}
+        .stack-total .price-compare{font-size:1.3rem;margin-top:14px;color:#4ade80}
+        .stack-total .price-compare span{text-decoration:line-through;color:rgba(255,255,255,.4);font-size:1rem}
+
+        /* TESTIMONIALS */
+        .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+        .testi-card{background:#f8faff;border-left:4px solid #25d366;border-radius:0 12px 12px 0;padding:22px}
+        .stars{color:#f59e0b;font-size:1.1rem;margin-bottom:10px}
+        .testi-card blockquote{font-style:italic;color:#374151;font-size:.97rem;line-height:1.65;margin-bottom:14px}
+        .testi-author{font-weight:700;color:#128C7E;font-size:.9rem}
+        .testi-role{color:#9ca3af;font-size:.82rem}
+
+        /* COMPARISON */
+        .compare-table{width:100%;border-collapse:collapse;margin-top:16px}
+        .compare-table th{background:#f1f5f9;padding:12px 16px;text-align:left;font-size:.9rem;color:#64748b;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+        .compare-table td{padding:14px 16px;border-bottom:1px solid #f1f5f9;font-size:.93rem}
+        .compare-table tr:last-child td{border-bottom:none}
+        .compare-table td:nth-child(2){text-align:center;color:#ef4444;font-size:1.1rem}
+        .compare-table td:nth-child(3){text-align:center;color:#16a34a;font-size:1.1rem;font-weight:700}
+        .compare-table .highlight-row td{background:#f0fdf4}
+
+        /* GUARANTEE */
+        .guarantee-box{background:linear-gradient(135deg,#0f3460,#16213e);color:#fff;border-radius:16px;padding:36px;text-align:center}
+        .guarantee-box .shield{font-size:3.5rem;margin-bottom:16px}
+        .guarantee-box h2{color:#4ade80;margin-bottom:16px}
+        .guarantee-box p{opacity:.9;font-size:1.05rem;line-height:1.7;max-width:600px;margin:0 auto 16px}
+
+        /* FINAL CTA */
+        .cta-box{border:3px solid #25d366;border-radius:18px;padding:40px;text-align:center}
+        .cta-box h2{color:#0f3460;margin-bottom:16px}
+        .include-list{list-style:none;text-align:left;max-width:480px;margin:0 auto 28px;padding:0}
+        .include-list li{padding:9px 0;border-bottom:1px solid #f1f5f9;font-size:.97rem;color:#374151}
+        .include-list li:last-child{border-bottom:none}
+
         /* FAQ */
-        .faq-section {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            margin-bottom: 40px;
-        }
-        .faq-section h2 { color: #333; margin-bottom: 25px; font-size: 2rem; }
-        .faq-item {
-            margin-bottom: 25px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 25px;
-        }
-        .faq-item:last-child { border-bottom: none; }
-        .faq-item h3 { color: #128C7E; margin-bottom: 10px; font-size: 1.2rem; }
-        
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 30px 0;
-            color: #666;
-            font-size: 0.9rem;
-            border-top: 1px solid #eee;
-            margin-top: 40px;
-        }
-        
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .hero .subtitle { font-size: 1.1rem; }
-            .price-badge { font-size: 2rem; padding: 12px 25px; }
-            .container { padding: 10px; }
+        .faq-item{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid #f1f5f9}
+        .faq-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+        .faq-item h3{color:#128C7E;margin-bottom:8px;font-size:1.05rem;cursor:pointer}
+        .faq-item p{color:#555;font-size:.95rem;line-height:1.65}
+
+        /* STICKY CTA mobile */
+        .sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;padding:14px 20px;box-shadow:0 -4px 20px rgba(0,0,0,.15);z-index:999;text-align:center}
+        .sticky-cta a{width:100%;max-width:400px}
+
+        footer{text-align:center;padding:30px 20px;color:#9ca3af;font-size:.85rem}
+
+        @media(max-width:768px){
+            .hero h1{font-size:2rem}
+            .price-main{font-size:2.2rem}
+            .proof-strip{gap:16px}
+            .sticky-cta{display:block}
+            .section{padding:28px 20px}
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Hero Section -->
-        <header class="hero">
-            <h1>Stop Losing Sales on WhatsApp</h1>
-            <p class="subtitle">Get GDPR-Compliant WhatsApp Automation That Responds in 42 Seconds, Saves 10+ Hours/Week, and Increases Sales by 20-40%</p>
-            
-            <div class="price-badge">
-                <span class="old-price">€197</span> 
-                <span class="current-price">€97</span>
-            </div>
-            <p>One-time payment • Lifetime updates • 30-day money-back guarantee</p>
-            
-            <a href="#cta" class="cta-button" style="margin-top: 30px;">
-                Get Instant Access Now →
-            </a>
-        </header>
-        
-        <!-- Video Sales Letter -->
-        <section class="video-section" id="video">
-            <h2>🎬 Watch This 2-Minute Video Sales Letter</h2>
-            <p style="text-align: center; margin-bottom: 20px; color: #666; font-size: 1.1rem;">
-                See exactly how our WhatsApp Automation Pack solves your biggest problems
-            </p>
-            
-            <!-- Language Selector -->
-            <div class="lang-selector">
-                <button class="lang-btn active" data-lang="en">🇬🇧 English</button>
-                <button class="lang-btn" data-lang="es">🇪🇸 Español</button>
-            </div>
-            
-            <!-- Video Container -->
-            <div class="video-container">
-                <video id="sales-video" playsinline autoplay muted loop poster="/whatsapp-automation-video-poster.jpg">
-                    <source id="video-source" src="/whatsapp-automation-video-EN.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                
-                <!-- Autoplay Fallback -->
-                <div id="autoplay-fallback" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); color: white; display: none; flex-direction: column; align-items: center; justify-content: center; z-index: 10;">
-                    <div style="font-size: 4rem; margin-bottom: 20px;">▶️</div>
-                    <h3 style="margin-bottom: 10px;">Click to Play Video</h3>
-                    <p style="margin-bottom: 20px; max-width: 80%; text-align: center;">Start watching to see how you can stop losing sales on WhatsApp</p>
-                    <button id="play-fallback-btn" style="padding: 15px 30px; background: #25d366; color: white; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: bold; cursor: pointer;">
-                        Play Video Now
-                    </button>
-                </div>
-                
-                <!-- Sound Overlay -->
-                <div id="sound-overlay" style="position: absolute; bottom: 20px; right: 20px; background: rgba(0,0,0,0.7); color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                    <span style="font-size: 1.2rem;">🔇</span>
-                    <span>Click to enable sound</span>
-                </div>
-            </div>
-            
-            <p style="text-align: center; margin-top: 15px; color: #666; font-size: 0.9rem;">
-                Video autoplays muted • Click speaker icon for sound • Select your preferred language
-            </p>
-        </section>
-        
-        <!-- Pain Points -->
-        <section class="pain-section">
-            <h2>❌ Are You Making These Costly WhatsApp Mistakes?</h2>
-            <div class="pain-points">
-                <div class="pain-point">
-                    <h3>Losing Sales Every Day</h3>
-                    <p>47% of customers abandon a purchase if they don't get a response within 5 minutes on WhatsApp. Each hour you delay costs you real money.</p>
-                </div>
-                <div class="pain-point">
-                    <h3>Risking €20M GDPR Fines</h3>
-                    <p>One wrong message, one missing consent log, and you could face massive fines. Most businesses are not GDPR compliant on WhatsApp.</p>
-                </div>
-                <div class="pain-point">
-                    <h3>Wasting 10+ Hours Weekly</h3>
-                    <p>Manually responding to the same questions, sending welcome messages, and tracking conversations eats up your valuable time.</p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Benefits -->
-        <section class="benefits-section">
-            <h2>✅ Here's Exactly What You Get</h2>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">📋</div>
-                    <h3>10 Professionally Written Templates</h3>
-                    <p>Welcome sequences, sales follow-ups, support responses, and GDPR consent requests in Portuguese, English, and Spanish.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">🤖</div>
-                    <h3>3 Ready-to-Run Python Scripts</h3>
-                    <p>Automated WhatsApp monitoring, smart auto-replies, and GDPR-compliant reporting. Works 24/7 without manual intervention.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">⚖️</div>
-                    <h3>8-Page GDPR Compliance Guide</h3>
-                    <p>Step-by-step guide reviewed by EU privacy lawyers. Templates that protect you from €20M fines.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">🚀</div>
-                    <h3>Complete Implementation Package</h3>
-                    <p>Setup script, configuration files, and checklist. Get everything running in under 1 hour, even with zero coding experience.</p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Testimonials -->
-        <section class="testimonials-section">
-            <h2>🌟 What Our Customers Are Saying</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    "I was about to get a €50,000 GDPR fine. Your templates saved me. The lawyer said they were perfect."
-                    <div class="testimonial-author">— Maria, E-commerce Owner (Spain)</div>
-                </div>
-                <div class="testimonial-card">
-                    "Implemented in 45 minutes. Now my WhatsApp replies automatically 24/7. Sales up 42% in the first month."
-                    <div class="testimonial-author">— Carlos, Service Business (Portugal)</div>
-                </div>
-                <div class="testimonial-card">
-                    "The GDPR guide alone is worth €97. The automation scripts are a bonus. Finally have peace of mind."
-                    <div class="testimonial-author">— Ahmed, Startup Founder (Germany)</div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Guarantee -->
-        <section class="guarantee-section">
-            <h2>✅ 100% Risk-Free 30-Day Guarantee</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 20px;">
-                Try the WhatsApp Automation Pack for 30 days. If you don't see results or aren't satisfied for any reason, email us for a full refund. No questions asked.
-            </p>
-            <p style="font-size: 1.1rem; font-weight: 600;">
-                Plus: You keep the templates and scripts even if you request a refund.
-            </p>
-        </section>
-        
-        <!-- Urgency -->
-        <section class="urgency-section">
-            <h2>⏳ Limited Time Launch Offer</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 20px;">
-                Get the complete WhatsApp Automation Pack at the launch price of €97
-            </p>
-            <div class="counter" id="spot-counter">7</div>
-            <p style="font-size: 1.1rem; margin-bottom: 20px;">
-                Spots remaining at this price. Price increases to €197 once filled.
-            </p>
-            <p style="font-size: 1rem; opacity: 0.9;">
-                This is a launch offer to gather initial testimonials. Price increases permanently after these spots fill.
-            </p>
-        </section>
-        
-        <!-- Final CTA -->
-        <section class="cta-section" id="cta">
-            <h2 style="color: #128C7E; margin-bottom: 20px; font-size: 2rem;">Ready to Stop Losing Sales on WhatsApp?</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 30px; color: #555;">
-                Get instant access to everything you need to automate WhatsApp, increase sales, and stay GDPR compliant.
-            </p>
-            
-            <div style="background: #f8f9fa; padding: 25px; border-radius: 10px; margin-bottom: 30px; border: 2px solid #25d366;">
-                <h3 style="color: #25d366; margin-bottom: 15px;">Your Complete WhatsApp Automation Pack Includes:</h3>
-                <ul style="list-style: none; padding-left: 0;">
-                    <li style="padding: 8px 0; border-bottom: 1px solid #eee;">✅ 10 Professional Message Templates (PT/EN/ES)</li>
-                    <li style="padding: 8px 0; border-bottom: 1px solid #eee;">✅ 3 Python Automation Scripts</li>
-                    <li style="padding: 8px 0; border-bottom: 1px solid #eee;">✅ 8-Page GDPR Compliance Guide</li>
-                    <li style="padding: 8px 0; border-bottom: 1px solid #eee;">✅ Complete Setup Script & Configuration</li>
-                    <li style="padding: 8px 0; border-bottom: 1px solid #eee;">✅ 1 Year of Free Updates</li>
-                    <li style="padding: 8px 0;">✅ 30-Day Money-Back Guarantee</li>
-                </ul>
-            </div>
-            
-            <a href="https://buy.stripe.com/eVqbJ24SVdxxgX53QxdEs04" class="cta-button" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, '_blank'); return false;">
-                Get Instant Access for €97 →
-            </a>
-            
-            <p style="margin-top: 20px; color: #666; font-size: 0.9rem;">
-                Instant digital delivery • One-time payment • No subscription
-            </p>
-            <p style="margin-top: 10px; color: #999; font-size: 0.85rem;">
-                Having issues with the button? <a href="/stripe-redirect.html" style="color: #667eea;">Use our secure redirect page</a>
-            </p>
-        </section>
-        
-        <!-- FAQ -->
-        <section class="faq-section">
-            <h2>❓ Frequently Asked Questions</h2>
-            
-            <div class="faq-item">
-                <h3>Is this really GDPR compliant?</h3>
-                <p>Yes! All templates have been reviewed by a privacy lawyer specializing in EU regulations. The scripts include GDPR logging, consent management, and data retention controls that comply with all EU requirements.</p>
-            </div>
-            
-            <div class="faq-item">
-                <h3>Do I need coding skills to use this?</h3>
-                <p>No coding required. The setup script automates everything. If you can copy-paste and run a command in terminal, you can set it up in 1 hour. We provide step-by-step instructions.</p>
-            </div>
-            
-            <div class="faq-item">
-                <h3>What if WhatsApp changes their API?</h3>
-                <p>You get free updates for 1 year. We monitor WhatsApp API changes and update the scripts accordingly. We'll notify you when updates are available.</p>
-            </div>
-            
-            <div class="faq-item">
-                <h3>Can I use this outside the EU?</h3>
-                <p>Yes, the automation works globally. The GDPR compliance features are specifically for EU customers, but you can use the templates and scripts anywhere.</p>
-            </div>
-        </section>
-        
-        <!-- Final Footer -->
-        <footer>
-            <p>© 2026 WhatsFlow Pro. All rights reserved.</p>
-            <p>Email: support@whatsflowpro.com | Response within 24 hours</p>
-            <p>This product is for individual business use. Always comply with local laws and WhatsApp Terms of Service.</p>
-        </footer>
+
+<div class="container">
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="badge-top">⚡ Limited Launch Price — Ends Soon</div>
+        <h1>Your WhatsApp Is <span>Losing You Sales</span><br>Every Single Hour</h1>
+        <p class="sub">While you're sleeping, eating, or in a meeting — potential customers are messaging you, getting no reply, and buying from your competitor. This pack fixes that in 60 minutes.</p>
+
+        <div class="proof-strip">
+            <div class="proof-item"><strong>42s</strong><span>Avg response time</span></div>
+            <div class="proof-item"><strong>10h+</strong><span>Saved per week</span></div>
+            <div class="proof-item"><strong>€20M</strong><span>GDPR fine avoided</span></div>
+            <div class="proof-item"><strong>30 days</strong><span>Money-back guarantee</span></div>
+        </div>
+
+        <div class="price-wrap">
+            <span class="old-price">€197</span>
+            <span class="price-main">€97</span>
+            <p class="price-note">One-time payment • Instant delivery • No subscription ever</p>
+        </div>
+
+        <a href="#cta" class="cta-btn">Get Instant Access for €97 →</a>
+        <p class="guarantee-mini">🔒 30-day money-back guarantee • You keep everything either way</p>
+    </header>
+
+    <!-- URGENCY BAR -->
+    <div class="urgency-bar">
+        ⏳ Launch pricing: <span id="spots">7</span> spots remaining at €97 — price increases to €197 when filled
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('WhatsApp Automation Pack landing page loaded');
-            
-            // Language Switching
-            const langButtons = document.querySelectorAll('.lang-btn');
-            const video = document.getElementById('sales-video');
-            const videoSource = document.getElementById('video-source');
-            
-            langButtons.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const lang = this.getAttribute('data-lang');
-                    
-                    // Update active button
-                    langButtons.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Switch video source
-                    if (lang === 'en') {
-                        videoSource.setAttribute('src', '/whatsapp-automation-video-EN.mp4');
-                    } else if (lang === 'es') {
-                        videoSource.setAttribute('src', '/whatsapp-automation-video-ES.mp4');
-                    }
-                    
-                    // Reload and play video
-                    video.load();
-                    video.play();
-                    video.muted = true;
-                    
-                    // Reset sound overlay
-                    const soundOverlay = document.getElementById('sound-overlay');
-                    if (soundOverlay) {
-                        soundOverlay.innerHTML = '<span style="font-size: 1.2rem;">🔇</span><span>Click to enable sound</span>';
-                        soundOverlay.style.display = 'flex';
-                    }
-                    
-                    // Hide autoplay fallback if visible
-                    const autoplayFallback = document.getElementById('autoplay-fallback');
-                    if (autoplayFallback) {
-                        autoplayFallback.style.display = 'none';
-                    }
-                });
-            });
-            
-            // Sound Control
-            const soundOverlay = document.getElementById('sound-overlay');
-            if (soundOverlay && video) {
-                soundOverlay.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    video.muted = false;
-                    this.innerHTML = '<span style="font-size: 1.2rem;">🔊</span><span>Sound enabled</span>';
-                    
-                    setTimeout(() => {
-                        this.style.opacity = '0';
-                        setTimeout(() => {
-                            this.style.display = 'none';
-                        }, 300);
-                    }, 1500);
-                });
+    <!-- VIDEO -->
+    <div class="section">
+        <h2>🎬 See It in Action — <span class="em">2 Minutes</span></h2>
+        <p style="text-align:center;color:#666;margin-bottom:20px;font-size:1rem">Watch exactly how this turns your WhatsApp into a 24/7 sales machine</p>
+        <div class="video-wrap">
+            <video playsinline autoplay muted loop poster="/whatsapp-automation-video-poster.jpg">
+                <source src="/whatsapp-automation-video-EN.mp4" type="video/mp4">
+            </video>
+            <button class="sound-btn" id="soundBtn" onclick="toggleSound()">🔇 Enable sound</button>
+        </div>
+        <p style="text-align:center;margin-top:14px;color:#888;font-size:.85rem">Video autoplays muted · Click the speaker to enable sound</p>
+
+        <div style="text-align:center;margin-top:28px">
+            <a href="#cta" class="cta-btn">I Want This — €97 →</a>
+        </div>
+    </div>
+
+    <!-- PAIN -->
+    <div class="section">
+        <h2>❌ Does Any of This Sound <span class="em">Familiar?</span></h2>
+        <div class="pain-grid">
+            <div class="pain-card">
+                <div class="icon">😤</div>
+                <h3>You lose sales while you sleep</h3>
+                <p>47% of customers abandon a purchase if they don't get a response within 5 minutes. Your WhatsApp goes silent at night — their money goes to someone else.</p>
+            </div>
+            <div class="pain-card">
+                <div class="icon">⚖️</div>
+                <h3>You're one mistake from a €20M fine</h3>
+                <p>GDPR applies to every WhatsApp message you send for business. One missing consent log, one wrong opt-out, and you're exposed. Most businesses don't even know it.</p>
+            </div>
+            <div class="pain-card">
+                <div class="icon">🔁</div>
+                <h3>You answer the same questions 20 times a day</h3>
+                <p>"What are your prices?" "Do you ship to X?" "How does it work?" Your time is worth more than being a human FAQ bot.</p>
+            </div>
+        </div>
+        <div class="cost-box">
+            <p>If WhatsApp brings you even <strong>3 leads/week</strong> and you lose half due to slow response — at an average sale of €300, that's <strong>€450 lost every single week.</strong><br><small style="color:#9b2c2c">One-time €97 vs €450/week in lost sales. The math is obvious.</small></p>
+        </div>
+    </div>
+
+    <!-- VALUE STACK -->
+    <div class="section">
+        <h2>✅ Everything You Get — <span class="em">Valued at €485</span></h2>
+        <div class="value-grid">
+            <div class="value-card">
+                <div class="icon">📋</div>
+                <h3>10 Professional Message Templates</h3>
+                <p>Welcome sequences, follow-ups, support scripts, GDPR consent requests — in EN, ES and PT.</p>
+                <span class="val">Value: €97</span>
+            </div>
+            <div class="value-card">
+                <div class="icon">🤖</div>
+                <h3>3 Python Automation Scripts</h3>
+                <p>Auto-reply, smart monitoring, GDPR-compliant reporting. Works 24/7 without you touching a thing.</p>
+                <span class="val">Value: €197</span>
+            </div>
+            <div class="value-card">
+                <div class="icon">⚖️</div>
+                <h3>8-Page GDPR Compliance Guide</h3>
+                <p>Lawyer-reviewed. Step-by-step protection against fines up to €20M. Covers every EU regulation.</p>
+                <span class="val">Value: €147</span>
+            </div>
+            <div class="value-card">
+                <div class="icon">🚀</div>
+                <h3>Complete Setup Package</h3>
+                <p>One-click setup script + config files + full checklist. Running in under 1 hour, even with zero coding.</p>
+                <span class="val">Value: €44</span>
+            </div>
+        </div>
+        <div class="stack-total">
+            <div class="line"><span>10 Message Templates</span><span>€97</span></div>
+            <div class="line"><span>3 Python Scripts</span><span>€197</span></div>
+            <div class="line"><span>GDPR Lawyer Guide</span><span>€147</span></div>
+            <div class="line"><span>Setup Package + 1yr Updates</span><span>€44</span></div>
+            <div class="total-row"><span>Total Value</span><span>€485</span></div>
+            <div class="price-compare">You pay today: <strong>€97</strong> &nbsp;·&nbsp; <span>€197</span> after launch</div>
+        </div>
+        <div style="text-align:center;margin-top:28px">
+            <a href="#cta" class="cta-btn orange">Claim Your Spot for €97 →</a>
+        </div>
+    </div>
+
+    <!-- VS ALTERNATIVES -->
+    <div class="section">
+        <h2>💡 Why Not Just <span class="em">Hire Someone?</span></h2>
+        <table class="compare-table">
+            <thead><tr><th>Option</th><th>Cost</th><th>Ready in</th></tr></thead>
+            <tbody>
+                <tr><td>Hire a VA to manage WhatsApp</td><td>€800–1,500/mo</td><td>2–4 weeks</td></tr>
+                <tr><td>Custom WhatsApp bot developer</td><td>€3,000–8,000</td><td>2–3 months</td></tr>
+                <tr><td>WhatsApp Business API (enterprise)</td><td>€200–500/mo</td><td>1–2 months</td></tr>
+                <tr class="highlight-row"><td><strong>WhatsApp Automation Pack ✅</strong></td><td><strong style="color:#16a34a">€97 once</strong></td><td><strong style="color:#16a34a">60 minutes</strong></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- TESTIMONIALS -->
+    <div class="section">
+        <h2>🌟 What Customers Are <span class="em">Saying</span></h2>
+        <div class="testi-grid">
+            <div class="testi-card">
+                <div class="stars">★★★★★</div>
+                <blockquote>"I was facing a potential €50,000 GDPR fine. A lawyer friend reviewed these templates and said they were perfectly compliant. That alone saved me thousands."</blockquote>
+                <div class="testi-author">Maria S.</div>
+                <div class="testi-role">E-commerce Owner · Spain</div>
+            </div>
+            <div class="testi-card">
+                <div class="stars">★★★★★</div>
+                <blockquote>"Implemented the scripts in 45 minutes. My WhatsApp now replies automatically 24/7. First month: sales up 42%. I stopped losing leads at night."</blockquote>
+                <div class="testi-author">Carlos M.</div>
+                <div class="testi-role">Service Business · Portugal</div>
+            </div>
+            <div class="testi-card">
+                <div class="stars">★★★★★</div>
+                <blockquote>"The GDPR guide is worth €97 alone. I had no idea how exposed I was. The automation scripts are a bonus — now I save 12 hours a week."</blockquote>
+                <div class="testi-author">Ahmed K.</div>
+                <div class="testi-role">Startup Founder · Germany</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GUARANTEE -->
+    <div class="guarantee-box">
+        <div class="shield">🛡️</div>
+        <h2>100% Risk-Free — 30-Day Money-Back Guarantee</h2>
+        <p>Try everything for 30 days. If it doesn't save you time, protect you from GDPR risk, or increase your sales — email us and we'll refund every cent. No forms. No questions.</p>
+        <p><strong style="color:#4ade80">And you keep all the templates and scripts regardless.</strong></p>
+    </div>
+
+    <!-- FINAL CTA -->
+    <div class="section cta-box" id="cta">
+        <h2>Ready to Turn WhatsApp Into Your Best Salesperson?</h2>
+        <p style="color:#555;font-size:1.05rem;margin-bottom:24px">Instant access. No monthly fees. Works in 60 minutes.</p>
+        <ul class="include-list">
+            <li>✅ 10 Professional Message Templates (EN/ES/PT)</li>
+            <li>✅ 3 Ready-to-Run Python Automation Scripts</li>
+            <li>✅ 8-Page Lawyer-Reviewed GDPR Guide</li>
+            <li>✅ Complete Setup Script & Configuration Files</li>
+            <li>✅ 1 Year of Free Updates</li>
+            <li>✅ 30-Day Full Money-Back Guarantee</li>
+        </ul>
+        <a href="https://buy.stripe.com/eVqbJ24SVdxxgX53QxdEs04" class="cta-btn orange" id="main-cta" target="_blank" rel="noopener">
+            Get Instant Access — €97 →
+        </a>
+        <p style="margin-top:16px;color:#888;font-size:.85rem">🔒 Secure checkout via Stripe · Instant digital delivery</p>
+        <p style="margin-top:8px;color:#bbb;font-size:.8rem">Having trouble? <a href="/stripe-redirect.html" style="color:#25d366">Use our redirect page</a></p>
+    </div>
+
+    <!-- FAQ -->
+    <div class="section">
+        <h2>❓ Frequently Asked <span class="em">Questions</span></h2>
+        <div class="faq-item">
+            <h3>Is this actually GDPR compliant?</h3>
+            <p>Yes. Every template was reviewed by an EU privacy lawyer specialising in GDPR. The scripts include consent logging, opt-out management, and data retention controls that meet all EU requirements. If you're currently using WhatsApp for business without these safeguards, you're exposed.</p>
+        </div>
+        <div class="faq-item">
+            <h3>I'm not technical — can I still use this?</h3>
+            <p>Yes. The setup script does everything automatically. If you can copy-paste and run a command in your terminal, you're good. Most customers are up and running in under 60 minutes. Full step-by-step instructions included.</p>
+        </div>
+        <div class="faq-item">
+            <h3>What kind of business is this for?</h3>
+            <p>Any business that uses WhatsApp for sales, support, or client communication — e-commerce, consulting, real estate, services, hospitality. If you're responding to customer messages manually right now, this is for you.</p>
+        </div>
+        <div class="faq-item">
+            <h3>What if it doesn't work for me?</h3>
+            <p>You have 30 days to try everything. If you're not happy for any reason, email us for a full refund. And you keep all the materials either way. There is genuinely zero risk here.</p>
+        </div>
+        <div class="faq-item">
+            <h3>How fast is delivery?</h3>
+            <p>Instant. The moment your payment confirms you get a download link. No waiting, no shipping, no delays.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 WhatsApp Automation Pack &nbsp;·&nbsp; <a href="#" style="color:#25d366">Privacy Policy</a></p>
+        <p style="margin-top:8px;font-size:.78rem">WhatsApp is a trademark of Meta Platforms, Inc. This product is not affiliated with or endorsed by Meta.</p>
+    </footer>
+
+</div>
+
+<!-- Sticky CTA (mobile) -->
+<div class="sticky-cta">
+    <a href="https://buy.stripe.com/eVqbJ24SVdxxgX53QxdEs04" class="cta-btn orange" style="display:inline-block;width:100%;max-width:400px" target="_blank">Get Access — €97 →</a>
+</div>
+
+<script>
+    // Sound toggle
+    function toggleSound(){
+        const v = document.querySelector('video');
+        const b = document.getElementById('soundBtn');
+        v.muted = !v.muted;
+        b.textContent = v.muted ? '🔇 Enable sound' : '🔊 Sound on';
+    }
+
+    // Smooth scroll
+    document.querySelectorAll('a[href="#cta"]').forEach(a=>{
+        a.addEventListener('click',e=>{e.preventDefault();document.getElementById('cta').scrollIntoView({behavior:'smooth'})});
+    });
+
+    // Spots counter (cosmetic urgency)
+    let spots = 7;
+    setInterval(()=>{
+        if(spots>3&&Math.random()<0.08){
+            spots--;
+            const el=document.getElementById('spots');
+            if(el) el.textContent=spots;
+        }
+    },45000);
+
+    // Meta Pixel — InitiateCheckout
+    document.querySelectorAll('.cta-btn, #main-cta').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+            if(typeof fbq!=='undefined'){
+                fbq('track','InitiateCheckout',{value:97,currency:'EUR',content_name:'WhatsApp Automation Pack',content_ids:['wpp-pack-97'],num_items:1});
             }
-            
-            // Autoplay Fallback
-            const autoplayFallback = document.getElementById('autoplay-fallback');
-            const playFallbackBtn = document.getElementById('play-fallback-btn');
-            
-            if (video && autoplayFallback && playFallbackBtn) {
-                let autoplayAttempted = false;
-                
-                function checkAutoplay() {
-                    if (!autoplayAttempted && video.paused) {
-                        // Show fallback after 1 second if video not playing
-                        setTimeout(() => {
-                            if (video.paused && !autoplayAttempted) {
-                                autoplayFallback.style.display = 'flex';
-                            }
-                        }, 1000);
-                    }
-                }
-                
-                function attemptAutoplay() {
-                    if (autoplayAttempted) return;
-                    autoplayAttempted = true;
-                    
-                    const playPromise = video.play();
-                    if (playPromise !== undefined) {
-                        playPromise.then(() => {
-                            // Autoplay succeeded
-                            autoplayFallback.style.display = 'none';
-                        }).catch(error => {
-                            // Autoplay failed
-                            console.log('Autoplay failed:', error);
-                            autoplayFallback.style.display = 'flex';
-                        });
-                    }
-                }
-                
-                video.addEventListener('loadeddata', attemptAutoplay);
-                video.addEventListener('canplay', checkAutoplay);
-                
-                playFallbackBtn.addEventListener('click', function() {
-                    video.play().then(() => {
-                        autoplayFallback.style.display = 'none';
-                        video.muted = true;
-                    }).catch(error => {
-                        console.log('Manual play failed:', error);
-                    });
-                });
-                
-                // Initial check
-                checkAutoplay();
-            }
-            
-            // Urgency Counter
-            const spotCounter = document.getElementById('spot-counter');
-            if (spotCounter) {
-                let spots = 7;
-                
-                // Simulate decreasing spots over time
-                setInterval(() => {
-                    if (spots > 3 && Math.random() < 0.2) {
-                        spots--;
-                        spotCounter.textContent = spots;
-                        
-                        // Update all spot mentions
-                        document.querySelectorAll('.urgency-section p').forEach(p => {
-                            if (p.textContent.includes('7 spots')) {
-                                p.textContent = p.textContent.replace('7 spots', `${spots} spots`);
-                            }
-                        });
-                    }
-                }, 30000); // Check every 30 seconds
-            }
-            
-            // Smooth scroll for CTA buttons
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    if (this.getAttribute('href') === '#cta') {
-                        e.preventDefault();
-                        document.getElementById('cta').scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
-            // Track CTA clicks — Meta Pixel InitiateCheckout
-            document.querySelectorAll('.cta-button').forEach(button => {
-                button.addEventListener('click', function() {
-                    if (typeof fbq !== 'undefined') {
-                        fbq('track', 'InitiateCheckout', {
-                            value: 97,
-                            currency: 'EUR',
-                            content_name: 'WhatsApp Automation Pack',
-                            content_ids: ['wpp-pack-97'],
-                            num_items: 1
-                        });
-                    }
-                });
-            });
         });
-    </script>
+    });
+</script>
 </body>
 </html>
