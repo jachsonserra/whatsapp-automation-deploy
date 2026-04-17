@@ -62,6 +62,11 @@
         .video-intro h2{font-size:1.7rem;font-weight:900;margin-bottom:8px;line-height:1.3}
         .video-intro h2 .em{color:#128C7E}
         .video-intro p{font-size:1.02rem;color:#4b5563;line-height:1.55}
+        .locked{max-height:0;overflow:hidden;opacity:0;transition:opacity .6s ease,max-height .6s ease;pointer-events:none}
+        .locked.revealed{max-height:20000px;opacity:1;pointer-events:auto}
+        .lock-notice{text-align:center;margin-top:22px;padding:18px 24px;background:linear-gradient(135deg,#fef3c7,#fde68a);border:2px dashed #f59e0b;border-radius:12px;color:#78350f;font-weight:700;font-size:1rem;max-width:560px;margin-left:auto;margin-right:auto}
+        .lock-notice strong{color:#b45309}
+        .lock-notice.hidden{display:none}
         .pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:10px}
         .pain-card{background:#fff5f5;border:1.5px solid #fed7d7;border-radius:12px;padding:24px}
         .pain-card .icon{font-size:1.8rem;margin-bottom:10px}
@@ -167,10 +172,14 @@
                 <div class="mute-sub">Este vídeo está en silencio. Toca para escuchar cómo funciona — 2 minutos que pueden salvar €450 cada semana.</div>
             </div>
         </div>
-        <div style="text-align:center;margin-top:28px">
-            <a href="#cta" class="cta-btn">Lo Quiero — €97 →</a>
+        <div class="lock-notice" id="lockNotice">
+            🔒 <strong>Haz clic en el vídeo para escuchar cómo funciona.</strong><br>
+            <span style="font-weight:500;font-size:.92rem">El precio, los bonos y el botón de compra aparecerán cuando veas la demo.</span>
         </div>
     </div>
+
+    <!-- CONTENIDO BLOQUEADO HASTA ENGAGEMENT -->
+    <div id="lockedContent" class="locked">
 
     <!-- PAIN -->
     <div class="section">
@@ -330,6 +339,8 @@
         </div>
     </div>
 
+    </div> <!-- /#lockedContent -->
+
     <footer>
         <p>© 2026 Pack Automatización WhatsApp &nbsp;·&nbsp; <a href="#" style="color:#25d366">Política de Privacidad</a></p>
         <p style="margin-top:8px;font-size:.78rem">WhatsApp es una marca registrada de Meta Platforms, Inc. Este producto no está afiliado ni respaldado por Meta.</p>
@@ -342,18 +353,31 @@
 </div>
 
 <script>
+    let vslUnlocked=false;
+    function unlockContent(reason){
+        if(vslUnlocked) return; vslUnlocked=true;
+        const locked=document.getElementById('lockedContent');
+        const notice=document.getElementById('lockNotice');
+        if(locked) locked.classList.add('revealed');
+        if(notice) notice.classList.add('hidden');
+        if(typeof fbq!=='undefined') fbq('track','ViewContent',{content_name:'VSL Unlocked ES:'+reason});
+        setTimeout(()=>{const ct=document.querySelector('#lockedContent .section'); if(ct) ct.scrollIntoView({behavior:'smooth',block:'start'});},700);
+    }
     function unmuteAndPlay(){
         const v=document.getElementById('vslVideo');
         const ov=document.getElementById('unmuteOverlay');
         if(!v) return;
         v.muted=false; v.currentTime=0; v.play().catch(()=>{});
         if(ov) ov.classList.add('hidden');
-        if(typeof fbq!=='undefined') fbq('track','ViewContent',{content_name:'VSL Unmuted ES'});
+        unlockContent('unmute');
     }
     document.addEventListener('DOMContentLoaded',()=>{
         const v=document.getElementById('vslVideo');
         const ov=document.getElementById('unmuteOverlay');
-        if(v&&ov) v.addEventListener('volumechange',()=>{ if(!v.muted) ov.classList.add('hidden'); });
+        if(!v) return;
+        v.addEventListener('volumechange',()=>{ if(!v.muted){ if(ov) ov.classList.add('hidden'); unlockContent('volumechange'); } });
+        v.addEventListener('timeupdate',()=>{ if(v.currentTime>=45) unlockContent('timeplayed'); });
+        v.addEventListener('ended',()=>unlockContent('ended'));
     });
     document.querySelectorAll('a[href="#cta"]').forEach(a=>{
         a.addEventListener('click',e=>{e.preventDefault();document.getElementById('cta').scrollIntoView({behavior:'smooth'})});
