@@ -157,16 +157,17 @@
 <div class="container">
 
     <!-- ══ VIDEO SLOT: cinema mode ══ -->
-    <div id="page-video-slot" style="display:none;background:#060a14;margin:-20px -20px 24px;padding:0 0 32px">
-        <div id="page-video-inner" style="width:100%;max-width:1100px;margin:0 auto;aspect-ratio:16/9;position:relative;cursor:pointer" onclick="toggleMuteInPage()">
-            <div id="page-mute-badge" style="display:none;position:absolute;bottom:16px;right:16px;background:rgba(0,0,0,.75);color:#fff;padding:8px 18px;border-radius:20px;font-size:.9rem;cursor:pointer;z-index:10;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.15)">🔇 Toca para oír</div>
+    <div id="page-video-slot" style="display:none;background:#060a14;margin:-20px -20px 28px;padding:20px 20px 32px">
+        <div style="position:relative;width:100%;max-width:1100px;margin:0 auto;padding-bottom:min(56.25%,618px);height:0;cursor:pointer;border-radius:10px;overflow:hidden" onclick="toggleMuteInPage()">
+            <div id="page-video-inner" style="position:absolute;inset:0;background:#000"></div>
+            <div id="page-mute-badge" style="display:none;position:absolute;bottom:16px;right:16px;background:rgba(0,0,0,.8);color:#fff;padding:8px 18px;border-radius:20px;font-size:.9rem;cursor:pointer;z-index:10;border:1px solid rgba(255,255,255,.2)">🔇 Toca para oír</div>
         </div>
-        <div style="text-align:center;padding:26px 20px 0">
-            <a href="https://buy.stripe.com/eVqbJ24SVdxxgX53QxdEs04" class="cta-btn orange" style="font-size:1.3rem;padding:24px 64px;display:inline-block;letter-spacing:.3px" target="_blank" rel="noopener" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:97,currency:'EUR'})">
+        <div style="text-align:center;padding:28px 20px 0">
+            <a href="https://buy.stripe.com/eVqbJ24SVdxxgX53QxdEs04" class="cta-btn orange" style="font-size:1.3rem;padding:24px 64px;display:inline-block" target="_blank" rel="noopener" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:97,currency:'EUR'})">
                 Acceso Inmediato — €97 →
             </a>
             <p style="color:rgba(255,255,255,.5);margin-top:14px;font-size:.88rem">🔒 Garantía 30 días · Entrega instantánea</p>
-            <p style="color:rgba(255,255,255,.28);margin-top:6px;font-size:.78rem">⬇ Desplázate para ver todos los detalles</p>
+            <p style="color:rgba(255,255,255,.3);margin-top:6px;font-size:.8rem">⬇ Desplázate para ver todo incluido</p>
         </div>
     </div>
 
@@ -396,6 +397,7 @@
 </div>
 
 <script>
+document.documentElement.style.overflow='hidden';
 document.body.style.overflow='hidden';
 let vslUnlocked=false;
 function revealPage(reason){
@@ -408,10 +410,11 @@ function revealPage(reason){
     const locked=document.getElementById('lockedContent');
     const notice=document.getElementById('lockNotice');
     const sticky=document.querySelector('.sticky-cta');
-    if(v&&inner){ v.style.width='100%';v.style.height='100%';v.style.objectFit='cover';v.style.display='block'; inner.insertBefore(v,inner.firstChild); }
+    if(v&&inner){ v.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block'; inner.appendChild(v); }
     if(v&&v.muted&&badge) badge.style.display='block';
     if(slot) slot.style.display='block';
-    if(splash){ splash.style.transition='opacity .7s';splash.style.opacity='0';setTimeout(()=>{splash.style.display='none';},750); }
+    if(splash){ splash.style.transition='opacity .6s';splash.style.opacity='0';setTimeout(()=>{splash.style.display='none';},650); }
+    document.documentElement.style.overflow='';
     document.body.style.overflow='';
     if(locked) locked.classList.add('revealed');
     if(notice) notice.classList.add('hidden');

@@ -232,22 +232,25 @@
 
 <div class="container">
 
-    <!-- ══ VIDEO SLOT: cinema mode — full width, dark bg ══ -->
-    <div id="page-video-slot" style="display:none;background:#060a14;margin:-20px -20px 24px;padding:0 0 32px">
-        <div id="page-video-inner" style="width:100%;max-width:1100px;margin:0 auto;aspect-ratio:16/9;position:relative;cursor:pointer" onclick="toggleMuteInPage()">
-            <!-- video element moved here by JS on unlock -->
-            <div id="page-mute-badge" style="display:none;position:absolute;bottom:16px;right:16px;background:rgba(0,0,0,.75);color:#fff;padding:8px 18px;border-radius:20px;font-size:.9rem;cursor:pointer;z-index:10;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.15)">🔇 Tap for sound</div>
+    <!-- ══ VIDEO SLOT: cinema mode ══ -->
+    <div id="page-video-slot" style="display:none;background:#060a14;margin:-20px -20px 28px;padding:20px 20px 32px">
+        <!-- video wrapper: padding-bottom trick for reliable 16:9 aspect ratio -->
+        <div style="position:relative;width:100%;max-width:1100px;margin:0 auto;padding-bottom:min(56.25%,618px);height:0;cursor:pointer;border-radius:10px;overflow:hidden" onclick="toggleMuteInPage()">
+            <div id="page-video-inner" style="position:absolute;inset:0;background:#000">
+                <!-- <video> moved here by JS — fills container via absolute positioning -->
+            </div>
+            <div id="page-mute-badge" style="display:none;position:absolute;bottom:16px;right:16px;background:rgba(0,0,0,.8);color:#fff;padding:8px 18px;border-radius:20px;font-size:.9rem;cursor:pointer;z-index:10;border:1px solid rgba(255,255,255,.2)">🔇 Tap for sound</div>
         </div>
-        <div style="text-align:center;padding:26px 20px 0">
+        <div style="text-align:center;padding:28px 20px 0">
             <a href="https://buy.stripe.com/eVqbJ24SVdxxgX53QxdEs04"
                class="cta-btn orange"
-               style="font-size:1.3rem;padding:24px 64px;display:inline-block;letter-spacing:.3px"
+               style="font-size:1.3rem;padding:24px 64px;display:inline-block"
                target="_blank" rel="noopener"
                onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:97,currency:'EUR'})">
                 Get Instant Access — €97 →
             </a>
             <p style="color:rgba(255,255,255,.5);margin-top:14px;font-size:.88rem">🔒 30-day money-back guarantee · Instant delivery</p>
-            <p style="color:rgba(255,255,255,.28);margin-top:6px;font-size:.78rem">⬇ Scroll down to see everything included</p>
+            <p style="color:rgba(255,255,255,.3);margin-top:6px;font-size:.8rem">⬇ Scroll to see everything included</p>
         </div>
     </div>
 
@@ -479,7 +482,8 @@
 </div>
 
 <script>
-// Lock scroll via inline style (so JS can cleanly remove it on unlock)
+// Lock scroll on BOTH html + body (so JS = '' cleanly removes both)
+document.documentElement.style.overflow = 'hidden';
 document.body.style.overflow = 'hidden';
 
 let vslUnlocked = false;
@@ -497,39 +501,39 @@ function revealPage(reason){
     const notice = document.getElementById('lockNotice');
     const sticky = document.querySelector('.sticky-cta');
 
-    // 1. Move <video> from splash into page slot (keeps playback state)
+    // 1. Move <video> into page slot — position:absolute to fill container
     if(v && inner){
-        v.style.width  = '100%';
-        v.style.height = '100%';
-        v.style.objectFit = 'cover';
-        v.style.display   = 'block';
-        inner.insertBefore(v, inner.firstChild);  // put video before mute badge
+        v.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block';
+        inner.appendChild(v);
     }
 
-    // 2. Show in-page mute badge if still muted
+    // 2. Show mute badge if still muted
     if(v && v.muted && badge) badge.style.display = 'block';
 
     // 3. Show video slot
     if(slot) slot.style.display = 'block';
 
-    // 4. Fade-out + remove splash shell
+    // 4. Fade + remove splash
     if(splash){
-        splash.style.transition = 'opacity .7s';
+        splash.style.transition = 'opacity .6s';
         splash.style.opacity = '0';
-        setTimeout(()=>{ splash.style.display = 'none'; }, 750);
+        setTimeout(()=>{ splash.style.display = 'none'; }, 650);
     }
 
-    // 5. Unlock scroll + reveal content
+    // 5. UNLOCK SCROLL — clear both html and body
+    document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
+
+    // 6. Reveal locked content
     if(locked) locked.classList.add('revealed');
     if(notice) notice.classList.add('hidden');
     if(sticky) sticky.style.display = 'block';
 
-    // 6. Pixel
+    // 7. Pixel
     if(typeof fbq!=='undefined')
         fbq('track','ViewContent',{content_name:'VSL Unlocked:'+reason});
 
-    // 7. Scroll to very top so user sees video first
+    // 8. Jump to very top so video is first thing seen
     window.scrollTo({top:0, behavior:'instant'});
 }
 
