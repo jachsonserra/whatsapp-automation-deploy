@@ -24,7 +24,7 @@
 
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:#1a1a2e;background:#f0f4f8;overflow:hidden}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:#1a1a2e;background:#f0f4f8}
         #vsl-splash{position:fixed;inset:0;z-index:9999;background:radial-gradient(ellipse at center,#0d1b3e 0%,#060a1a 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s ease}
         #vsl-splash.fade-out{opacity:0;pointer-events:none}
         .splash-logo{color:rgba(255,255,255,.55);font-size:.85rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px}
@@ -156,17 +156,17 @@
 
 <div class="container">
 
-    <!-- ══ VIDEO SLOT ══ -->
-    <div id="page-video-slot" style="display:none;background:#0a0f1e;border-radius:0 0 20px 20px;padding:0 0 28px;margin-bottom:24px">
-        <div id="page-video-inner" style="width:100%;max-width:760px;margin:0 auto;aspect-ratio:16/9;border-radius:12px;overflow:hidden;position:relative;cursor:pointer" onclick="toggleMuteInPage()">
-            <div id="page-mute-badge" style="display:none;position:absolute;bottom:14px;right:14px;background:rgba(0,0,0,.72);color:#fff;padding:6px 14px;border-radius:20px;font-size:.85rem;cursor:pointer;z-index:10;backdrop-filter:blur(4px)">🔇 Toca para oír</div>
+    <!-- ══ VIDEO SLOT: cinema mode ══ -->
+    <div id="page-video-slot" style="display:none;background:#060a14;margin:-20px -20px 24px;padding:0 0 32px">
+        <div id="page-video-inner" style="width:100%;max-width:1100px;margin:0 auto;aspect-ratio:16/9;position:relative;cursor:pointer" onclick="toggleMuteInPage()">
+            <div id="page-mute-badge" style="display:none;position:absolute;bottom:16px;right:16px;background:rgba(0,0,0,.75);color:#fff;padding:8px 18px;border-radius:20px;font-size:.9rem;cursor:pointer;z-index:10;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.15)">🔇 Toca para oír</div>
         </div>
-        <div style="text-align:center;padding:22px 20px 0">
-            <a href="https://buy.stripe.com/eVqbJ24SVdxxgX53QxdEs04" class="cta-btn orange" style="font-size:1.25rem;padding:22px 56px;display:inline-block" target="_blank" rel="noopener" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:97,currency:'EUR'})">
+        <div style="text-align:center;padding:26px 20px 0">
+            <a href="https://buy.stripe.com/eVqbJ24SVdxxgX53QxdEs04" class="cta-btn orange" style="font-size:1.3rem;padding:24px 64px;display:inline-block;letter-spacing:.3px" target="_blank" rel="noopener" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:97,currency:'EUR'})">
                 Acceso Inmediato — €97 →
             </a>
-            <p style="color:rgba(255,255,255,.55);margin-top:12px;font-size:.85rem">🔒 Garantía 30 días · Entrega instantánea</p>
-            <p style="color:rgba(255,255,255,.35);margin-top:6px;font-size:.78rem">⬇ Desplázate para ver todos los detalles</p>
+            <p style="color:rgba(255,255,255,.5);margin-top:14px;font-size:.88rem">🔒 Garantía 30 días · Entrega instantánea</p>
+            <p style="color:rgba(255,255,255,.28);margin-top:6px;font-size:.78rem">⬇ Desplázate para ver todos los detalles</p>
         </div>
     </div>
 
@@ -396,6 +396,7 @@
 </div>
 
 <script>
+document.body.style.overflow='hidden';
 let vslUnlocked=false;
 function revealPage(reason){
     if(vslUnlocked) return; vslUnlocked=true;
