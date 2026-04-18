@@ -353,34 +353,53 @@
 </div>
 
 <script>
+    // SCROLL LOCK
+    document.documentElement.style.overflow='hidden';
+    document.body.style.overflow='hidden';
+
     let vslUnlocked=false;
     function unlockContent(reason){
         if(vslUnlocked) return; vslUnlocked=true;
+        document.documentElement.style.overflow='';
+        document.body.style.overflow='';
         const locked=document.getElementById('lockedContent');
         const notice=document.getElementById('lockNotice');
+        const sticky=document.querySelector('.sticky-cta');
         if(locked) locked.classList.add('revealed');
         if(notice) notice.classList.add('hidden');
+        if(sticky) sticky.style.display='block';
         if(typeof fbq!=='undefined') fbq('track','ViewContent',{content_name:'VSL Unlocked ES:'+reason});
-        setTimeout(()=>{const ct=document.querySelector('#lockedContent .section'); if(ct) ct.scrollIntoView({behavior:'smooth',block:'start'});},700);
+        setTimeout(()=>{const ct=document.querySelector('#lockedContent .section'); if(ct) ct.scrollIntoView({behavior:'smooth',block:'start'});},600);
     }
     function unmuteAndPlay(){
         const v=document.getElementById('vslVideo');
         const ov=document.getElementById('unmuteOverlay');
         if(!v) return;
-        v.muted=false; v.currentTime=0; v.play().catch(()=>{});
+        v.muted=false; v.currentTime=0;
+        v.play().catch(()=>{ v.muted=true; v.play(); });
         if(ov) ov.classList.add('hidden');
         unlockContent('unmute');
     }
     document.addEventListener('DOMContentLoaded',()=>{
         const v=document.getElementById('vslVideo');
         const ov=document.getElementById('unmuteOverlay');
+        const sticky=document.querySelector('.sticky-cta');
+        if(sticky) sticky.style.display='none';
         if(!v) return;
+        const pp=v.play();
+        if(pp!==undefined) pp.catch(()=>{
+            if(ov){ ov.querySelector('.play-icon').textContent='▶'; ov.querySelector('.mute-badge').textContent='▶ PULSA PARA REPRODUCIR'; }
+        });
         v.addEventListener('volumechange',()=>{ if(!v.muted){ if(ov) ov.classList.add('hidden'); unlockContent('volumechange'); } });
         v.addEventListener('timeupdate',()=>{ if(v.currentTime>=45) unlockContent('timeplayed'); });
         v.addEventListener('ended',()=>unlockContent('ended'));
     });
     document.querySelectorAll('a[href="#cta"]').forEach(a=>{
-        a.addEventListener('click',e=>{e.preventDefault();document.getElementById('cta').scrollIntoView({behavior:'smooth'})});
+        a.addEventListener('click',e=>{
+            e.preventDefault();
+            if(!vslUnlocked){ unlockContent('cta_click'); return; }
+            document.getElementById('cta').scrollIntoView({behavior:'smooth'});
+        });
     });
     let spots=7;
     setInterval(()=>{
