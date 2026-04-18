@@ -213,14 +213,10 @@
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════════════════
-     VSL SPLASH — covers 100% of screen on arrival
-     Fades out + reveals page when user engages
-══════════════════════════════════════════════════════ -->
+<!-- ══ VSL SPLASH: fullscreen on arrival ══ -->
 <div id="vsl-splash">
     <div class="splash-logo">💬 <span>WhatsApp</span> Automation Pack</div>
-
-    <div class="splash-video-wrap" onclick="splashUnmute()">
+    <div id="splash-video-wrap" class="splash-video-wrap" onclick="splashUnmute()">
         <video id="vslVideo" playsinline autoplay muted preload="auto"
                poster="/whatsapp-automation-video-poster.jpg">
             <source src="/whatsapp-automation-video-EN.mp4" type="video/mp4">
@@ -231,12 +227,29 @@
             <div class="splash-sub">Playing muted — tap to hear how it works</div>
         </div>
     </div>
-
-    <div class="splash-cta-hint">⬇ Scroll to see price &amp; offer after video</div>
+    <div class="splash-cta-hint" id="splashHint">⬇ Price &amp; offer revealed after video</div>
 </div>
-<!-- ══════════════════════════════════════════════════════ -->
 
 <div class="container">
+
+    <!-- ══ VIDEO SLOT: video moves here on unlock ══ -->
+    <div id="page-video-slot" style="display:none;background:#0a0f1e;border-radius:0 0 20px 20px;padding:0 0 28px;margin-bottom:24px">
+        <div id="page-video-inner" style="width:100%;max-width:760px;margin:0 auto;aspect-ratio:16/9;border-radius:12px;overflow:hidden;position:relative;cursor:pointer" onclick="toggleMuteInPage()">
+            <!-- video element moved here by JS on unlock -->
+            <div id="page-mute-badge" style="display:none;position:absolute;bottom:14px;right:14px;background:rgba(0,0,0,.72);color:#fff;padding:6px 14px;border-radius:20px;font-size:.85rem;cursor:pointer;z-index:10;backdrop-filter:blur(4px)">🔇 Tap for sound</div>
+        </div>
+        <div style="text-align:center;padding:22px 20px 0">
+            <a href="https://buy.stripe.com/eVqbJ24SVdxxgX53QxdEs04"
+               class="cta-btn orange"
+               style="font-size:1.25rem;padding:22px 56px;display:inline-block"
+               target="_blank" rel="noopener"
+               onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:97,currency:'EUR'})">
+                Get Instant Access — €97 →
+            </a>
+            <p style="color:rgba(255,255,255,.55);margin-top:12px;font-size:.85rem">🔒 30-day money-back guarantee · Instant delivery</p>
+            <p style="color:rgba(255,255,255,.35);margin-top:6px;font-size:.78rem">⬇ Scroll down to read all details</p>
+        </div>
+    </div>
 
     <!-- HERO -->
     <header class="hero">
@@ -466,39 +479,55 @@
 </div>
 
 <script>
-// ══════════════════════════════════════════════════════════════════
-//  VSL SPLASH LOGIC
-// ══════════════════════════════════════════════════════════════════
 let vslUnlocked = false;
 
 function revealPage(reason){
     if(vslUnlocked) return;
     vslUnlocked = true;
 
-    // 1. Fade out splash
+    const v      = document.getElementById('vslVideo');
     const splash = document.getElementById('vsl-splash');
-    if(splash){
-        splash.classList.add('fade-out');
-        setTimeout(()=>{ splash.style.display='none'; }, 900);
-    }
-
-    // 2. Unlock scroll
-    document.body.style.overflow = '';
-
-    // 3. Reveal locked content
+    const slot   = document.getElementById('page-video-slot');
+    const inner  = document.getElementById('page-video-inner');
+    const badge  = document.getElementById('page-mute-badge');
     const locked = document.getElementById('lockedContent');
     const notice = document.getElementById('lockNotice');
     const sticky = document.querySelector('.sticky-cta');
+
+    // 1. Move <video> from splash into page slot (keeps playback state)
+    if(v && inner){
+        v.style.width  = '100%';
+        v.style.height = '100%';
+        v.style.objectFit = 'cover';
+        v.style.display   = 'block';
+        inner.insertBefore(v, inner.firstChild);  // put video before mute badge
+    }
+
+    // 2. Show in-page mute badge if still muted
+    if(v && v.muted && badge) badge.style.display = 'block';
+
+    // 3. Show video slot
+    if(slot) slot.style.display = 'block';
+
+    // 4. Fade-out + remove splash shell
+    if(splash){
+        splash.style.transition = 'opacity .7s';
+        splash.style.opacity = '0';
+        setTimeout(()=>{ splash.style.display = 'none'; }, 750);
+    }
+
+    // 5. Unlock scroll + reveal content
+    document.body.style.overflow = '';
     if(locked) locked.classList.add('revealed');
     if(notice) notice.classList.add('hidden');
     if(sticky) sticky.style.display = 'block';
 
-    // 4. Pixel event
+    // 6. Pixel
     if(typeof fbq!=='undefined')
         fbq('track','ViewContent',{content_name:'VSL Unlocked:'+reason});
 
-    // 5. Scroll suave até hero (topo da página)
-    setTimeout(()=>{ window.scrollTo({top:0, behavior:'smooth'}); }, 400);
+    // 7. Scroll to very top so user sees video first
+    window.scrollTo({top:0, behavior:'instant'});
 }
 
 function splashUnmute(){
@@ -509,41 +538,49 @@ function splashUnmute(){
     v.currentTime = 0;
     v.play().catch(()=>{ v.muted = true; v.play(); });
     if(ov) ov.classList.add('hidden');
-    // Don't unlock yet — let them watch; unlock at 45s or end
-    // But if they unmuted, at least reveal overlay gone
+}
+
+function toggleMuteInPage(){
+    const v     = document.getElementById('vslVideo');
+    const badge = document.getElementById('page-mute-badge');
+    if(!v) return;
+    v.muted = !v.muted;
+    if(badge) badge.style.display = v.muted ? 'block' : 'none';
+    if(!v.muted) v.play().catch(()=>{});
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
     const v  = document.getElementById('vslVideo');
     const ov = document.getElementById('splashOverlay');
-    const sticky = document.querySelector('.sticky-cta');
-    if(sticky) sticky.style.display = 'none';
+    if(document.querySelector('.sticky-cta')) document.querySelector('.sticky-cta').style.display = 'none';
     if(!v) return;
 
-    // Try autoplay muted
+    // Autoplay muted
     v.play().catch(()=>{
-        // Blocked — show tap-to-play
         const pb = document.getElementById('splashPlayBtn');
         const lb = ov ? ov.querySelector('.splash-label') : null;
         if(pb) pb.textContent = '▶';
         if(lb) lb.textContent = '▶  TAP TO PLAY';
     });
 
-    // Unmute via native controls or overlay click → hide overlay
+    // Hide splash overlay when unmuted
     v.addEventListener('volumechange',()=>{
         if(!v.muted && ov) ov.classList.add('hidden');
+        // Also hide in-page badge
+        const badge = document.getElementById('page-mute-badge');
+        if(badge && !v.muted) badge.style.display = 'none';
     });
 
-    // 45 seconds watched → reveal page
+    // 45s → reveal
     v.addEventListener('timeupdate',()=>{
-        if(v.currentTime >= 45) revealPage('timeplayed_45s');
+        if(v.currentTime >= 45) revealPage('45s');
     });
 
-    // Video ended → reveal page
-    v.addEventListener('ended',()=> revealPage('video_ended'));
+    // Ended → reveal
+    v.addEventListener('ended',()=> revealPage('ended'));
 });
 
-// CTA clicks in hero → skip splash, reveal page
+// Hero CTAs → instant reveal
 document.querySelectorAll('a[href="#cta"]').forEach(a=>{
     a.addEventListener('click',e=>{
         e.preventDefault();
@@ -562,14 +599,11 @@ setInterval(()=>{
     }
 },45000);
 
-// Meta Pixel — InitiateCheckout
+// Pixel — InitiateCheckout
 document.querySelectorAll('.cta-btn, #main-cta').forEach(btn=>{
     btn.addEventListener('click',()=>{
-        if(typeof fbq!=='undefined'){
-            fbq('track','InitiateCheckout',{value:97,currency:'EUR',
-                content_name:'WhatsApp Automation Pack',
-                content_ids:['wpp-pack-97'],num_items:1});
-        }
+        if(typeof fbq!=='undefined')
+            fbq('track','InitiateCheckout',{value:97,currency:'EUR',content_name:'WhatsApp Automation Pack',content_ids:['wpp-pack-97'],num_items:1});
     });
 });
 </script>

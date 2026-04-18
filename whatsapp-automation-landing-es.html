@@ -141,7 +141,7 @@
 
 <div id="vsl-splash">
     <div class="splash-logo">💬 <span>Pack Automatización</span> WhatsApp</div>
-    <div class="splash-video-wrap" onclick="splashUnmute()">
+    <div id="splash-video-wrap" class="splash-video-wrap" onclick="splashUnmute()">
         <video id="vslVideo" playsinline autoplay muted preload="auto" poster="/whatsapp-automation-video-poster-es.jpg">
             <source src="/whatsapp-automation-video-ES.mp4" type="video/mp4">
         </video>
@@ -155,6 +155,20 @@
 </div>
 
 <div class="container">
+
+    <!-- ══ VIDEO SLOT ══ -->
+    <div id="page-video-slot" style="display:none;background:#0a0f1e;border-radius:0 0 20px 20px;padding:0 0 28px;margin-bottom:24px">
+        <div id="page-video-inner" style="width:100%;max-width:760px;margin:0 auto;aspect-ratio:16/9;border-radius:12px;overflow:hidden;position:relative;cursor:pointer" onclick="toggleMuteInPage()">
+            <div id="page-mute-badge" style="display:none;position:absolute;bottom:14px;right:14px;background:rgba(0,0,0,.72);color:#fff;padding:6px 14px;border-radius:20px;font-size:.85rem;cursor:pointer;z-index:10;backdrop-filter:blur(4px)">🔇 Toca para oír</div>
+        </div>
+        <div style="text-align:center;padding:22px 20px 0">
+            <a href="https://buy.stripe.com/eVqbJ24SVdxxgX53QxdEs04" class="cta-btn orange" style="font-size:1.25rem;padding:22px 56px;display:inline-block" target="_blank" rel="noopener" onclick="if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:97,currency:'EUR'})">
+                Acceso Inmediato — €97 →
+            </a>
+            <p style="color:rgba(255,255,255,.55);margin-top:12px;font-size:.85rem">🔒 Garantía 30 días · Entrega instantánea</p>
+            <p style="color:rgba(255,255,255,.35);margin-top:6px;font-size:.78rem">⬇ Desplázate para ver todos los detalles</p>
+        </div>
+    </div>
 
     <!-- HERO -->
     <header class="hero">
@@ -385,17 +399,24 @@
 let vslUnlocked=false;
 function revealPage(reason){
     if(vslUnlocked) return; vslUnlocked=true;
+    const v=document.getElementById('vslVideo');
     const splash=document.getElementById('vsl-splash');
-    if(splash){ splash.classList.add('fade-out'); setTimeout(()=>{splash.style.display='none';},900); }
-    document.body.style.overflow='';
+    const slot=document.getElementById('page-video-slot');
+    const inner=document.getElementById('page-video-inner');
+    const badge=document.getElementById('page-mute-badge');
     const locked=document.getElementById('lockedContent');
     const notice=document.getElementById('lockNotice');
     const sticky=document.querySelector('.sticky-cta');
+    if(v&&inner){ v.style.width='100%';v.style.height='100%';v.style.objectFit='cover';v.style.display='block'; inner.insertBefore(v,inner.firstChild); }
+    if(v&&v.muted&&badge) badge.style.display='block';
+    if(slot) slot.style.display='block';
+    if(splash){ splash.style.transition='opacity .7s';splash.style.opacity='0';setTimeout(()=>{splash.style.display='none';},750); }
+    document.body.style.overflow='';
     if(locked) locked.classList.add('revealed');
     if(notice) notice.classList.add('hidden');
     if(sticky) sticky.style.display='block';
     if(typeof fbq!=='undefined') fbq('track','ViewContent',{content_name:'VSL Unlocked ES:'+reason});
-    setTimeout(()=>{ window.scrollTo({top:0,behavior:'smooth'}); },400);
+    window.scrollTo({top:0,behavior:'instant'});
 }
 function splashUnmute(){
     const v=document.getElementById('vslVideo');
@@ -405,11 +426,18 @@ function splashUnmute(){
     v.play().catch(()=>{ v.muted=true; v.play(); });
     if(ov) ov.classList.add('hidden');
 }
+function toggleMuteInPage(){
+    const v=document.getElementById('vslVideo');
+    const badge=document.getElementById('page-mute-badge');
+    if(!v) return;
+    v.muted=!v.muted;
+    if(badge) badge.style.display=v.muted?'block':'none';
+    if(!v.muted) v.play().catch(()=>{});
+}
 document.addEventListener('DOMContentLoaded',()=>{
     const v=document.getElementById('vslVideo');
     const ov=document.getElementById('splashOverlay');
-    const sticky=document.querySelector('.sticky-cta');
-    if(sticky) sticky.style.display='none';
+    if(document.querySelector('.sticky-cta')) document.querySelector('.sticky-cta').style.display='none';
     if(!v) return;
     v.play().catch(()=>{
         const pb=document.getElementById('splashPlayBtn');
@@ -417,9 +445,13 @@ document.addEventListener('DOMContentLoaded',()=>{
         if(pb) pb.textContent='▶';
         if(lb) lb.textContent='▶  PULSA PARA REPRODUCIR';
     });
-    v.addEventListener('volumechange',()=>{ if(!v.muted&&ov) ov.classList.add('hidden'); });
-    v.addEventListener('timeupdate',()=>{ if(v.currentTime>=45) revealPage('timeplayed_45s'); });
-    v.addEventListener('ended',()=>revealPage('video_ended'));
+    v.addEventListener('volumechange',()=>{
+        if(!v.muted&&ov) ov.classList.add('hidden');
+        const badge=document.getElementById('page-mute-badge');
+        if(badge&&!v.muted) badge.style.display='none';
+    });
+    v.addEventListener('timeupdate',()=>{ if(v.currentTime>=45) revealPage('45s'); });
+    v.addEventListener('ended',()=>revealPage('ended'));
 });
 document.querySelectorAll('a[href="#cta"]').forEach(a=>{
     a.addEventListener('click',e=>{
@@ -434,9 +466,7 @@ setInterval(()=>{
 },45000);
 document.querySelectorAll('.cta-btn,#main-cta').forEach(btn=>{
     btn.addEventListener('click',()=>{
-        if(typeof fbq!=='undefined'){
-            fbq('track','InitiateCheckout',{value:97,currency:'EUR',content_name:'Pack Automatización WhatsApp',content_ids:['wpp-pack-97'],num_items:1});
-        }
+        if(typeof fbq!=='undefined') fbq('track','InitiateCheckout',{value:97,currency:'EUR',content_name:'Pack Automatización WhatsApp',content_ids:['wpp-pack-97'],num_items:1});
     });
 });
 </script>
