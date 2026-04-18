@@ -24,7 +24,63 @@
 
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:#1a1a2e;background:#f0f4f8}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:#1a1a2e;background:#f0f4f8;overflow:hidden}
+
+        /* ── VSL SPLASH SCREEN ─────────────────────────────────────────── */
+        #vsl-splash{
+            position:fixed;inset:0;z-index:9999;
+            background:radial-gradient(ellipse at center,#0d1b3e 0%,#060a1a 100%);
+            display:flex;flex-direction:column;align-items:center;justify-content:center;
+            transition:opacity .8s ease;
+        }
+        #vsl-splash.fade-out{opacity:0;pointer-events:none}
+
+        .splash-logo{
+            color:rgba(255,255,255,.55);font-size:.85rem;font-weight:700;
+            letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px;
+        }
+        .splash-logo span{color:#25d366}
+
+        .splash-video-wrap{
+            width:min(880px,94vw);aspect-ratio:16/9;
+            border-radius:12px;overflow:hidden;
+            box-shadow:0 0 80px rgba(37,211,102,.18),0 20px 60px rgba(0,0,0,.7);
+            position:relative;cursor:pointer;background:#000;
+        }
+        .splash-video-wrap video{width:100%;height:100%;object-fit:cover;display:block}
+
+        /* unmute overlay inside splash */
+        .splash-overlay{
+            position:absolute;inset:0;display:flex;flex-direction:column;
+            align-items:center;justify-content:center;
+            background:rgba(0,0,0,.52);transition:opacity .4s;
+        }
+        .splash-overlay.hidden{opacity:0;pointer-events:none}
+        .splash-play{
+            width:80px;height:80px;background:rgba(37,211,102,.9);border-radius:50%;
+            display:flex;align-items:center;justify-content:center;
+            font-size:2rem;color:#fff;margin-bottom:18px;
+            box-shadow:0 0 0 0 rgba(37,211,102,.6);
+            animation:splash-pulse 1.8s infinite;
+        }
+        @keyframes splash-pulse{
+            0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)}
+            70%{box-shadow:0 0 0 22px rgba(37,211,102,0)}
+            100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}
+        }
+        .splash-label{
+            color:#fff;font-size:1.05rem;font-weight:700;
+            background:rgba(0,0,0,.55);padding:10px 22px;border-radius:50px;
+            border:2px solid rgba(37,211,102,.5);
+        }
+        .splash-sub{
+            color:rgba(255,255,255,.6);font-size:.82rem;margin-top:8px;text-align:center;
+        }
+        .splash-cta-hint{
+            margin-top:20px;color:rgba(255,255,255,.38);
+            font-size:.78rem;text-align:center;letter-spacing:.5px;
+        }
+        /* ────────────────────────────────────────────────────────────────── */
         .container{max-width:960px;margin:0 auto;padding:20px}
 
         /* HERO */
@@ -156,6 +212,29 @@
     </style>
 </head>
 <body>
+
+<!-- ══════════════════════════════════════════════════════
+     VSL SPLASH — covers 100% of screen on arrival
+     Fades out + reveals page when user engages
+══════════════════════════════════════════════════════ -->
+<div id="vsl-splash">
+    <div class="splash-logo">💬 <span>WhatsApp</span> Automation Pack</div>
+
+    <div class="splash-video-wrap" onclick="splashUnmute()">
+        <video id="vslVideo" playsinline autoplay muted preload="auto"
+               poster="/whatsapp-automation-video-poster.jpg">
+            <source src="/whatsapp-automation-video-EN.mp4" type="video/mp4">
+        </video>
+        <div class="splash-overlay" id="splashOverlay">
+            <div class="splash-play" id="splashPlayBtn">▶</div>
+            <div class="splash-label">🔊 CLICK FOR SOUND</div>
+            <div class="splash-sub">Playing muted — tap to hear how it works</div>
+        </div>
+    </div>
+
+    <div class="splash-cta-hint">⬇ Scroll to see price &amp; offer after video</div>
+</div>
+<!-- ══════════════════════════════════════════════════════ -->
 
 <div class="container">
 
@@ -387,107 +466,112 @@
 </div>
 
 <script>
-    // ── SCROLL LOCK — bloqueia scroll do body até unlock ─────────────────────
-    document.documentElement.style.overflow = 'hidden';
-    document.body.style.overflow = 'hidden';
+// ══════════════════════════════════════════════════════════════════
+//  VSL SPLASH LOGIC
+// ══════════════════════════════════════════════════════════════════
+let vslUnlocked = false;
 
-    // ── VSL LOCK ──────────────────────────────────────────────────────────────
-    let vslUnlocked = false;
-    function unlockContent(reason){
-        if(vslUnlocked) return;
-        vslUnlocked = true;
+function revealPage(reason){
+    if(vslUnlocked) return;
+    vslUnlocked = true;
 
-        // Libera scroll
-        document.documentElement.style.overflow = '';
-        document.body.style.overflow = '';
-
-        const locked = document.getElementById('lockedContent');
-        const notice = document.getElementById('lockNotice');
-        const sticky = document.querySelector('.sticky-cta');
-        if(locked) locked.classList.add('revealed');
-        if(notice) notice.classList.add('hidden');
-        if(sticky) sticky.style.display = 'block';
-
-        if(typeof fbq!=='undefined') fbq('track','ViewContent',{content_name:'VSL Unlocked:'+reason});
-
-        // scroll suave até a oferta
-        setTimeout(()=>{
-            const ct = document.querySelector('#lockedContent .section');
-            if(ct) ct.scrollIntoView({behavior:'smooth', block:'start'});
-        }, 600);
+    // 1. Fade out splash
+    const splash = document.getElementById('vsl-splash');
+    if(splash){
+        splash.classList.add('fade-out');
+        setTimeout(()=>{ splash.style.display='none'; }, 900);
     }
 
-    function unmuteAndPlay(){
-        const v  = document.getElementById('vslVideo');
-        const ov = document.getElementById('unmuteOverlay');
-        if(!v) return;
-        v.muted = false;
-        v.currentTime = 0;
-        v.play().catch(()=>{ v.muted = true; v.play(); }); // fallback: muted
-        if(ov) ov.classList.add('hidden');
-        unlockContent('unmute');
+    // 2. Unlock scroll
+    document.body.style.overflow = '';
+
+    // 3. Reveal locked content
+    const locked = document.getElementById('lockedContent');
+    const notice = document.getElementById('lockNotice');
+    const sticky = document.querySelector('.sticky-cta');
+    if(locked) locked.classList.add('revealed');
+    if(notice) notice.classList.add('hidden');
+    if(sticky) sticky.style.display = 'block';
+
+    // 4. Pixel event
+    if(typeof fbq!=='undefined')
+        fbq('track','ViewContent',{content_name:'VSL Unlocked:'+reason});
+
+    // 5. Scroll suave até hero (topo da página)
+    setTimeout(()=>{ window.scrollTo({top:0, behavior:'smooth'}); }, 400);
+}
+
+function splashUnmute(){
+    const v  = document.getElementById('vslVideo');
+    const ov = document.getElementById('splashOverlay');
+    if(!v) return;
+    v.muted = false;
+    v.currentTime = 0;
+    v.play().catch(()=>{ v.muted = true; v.play(); });
+    if(ov) ov.classList.add('hidden');
+    // Don't unlock yet — let them watch; unlock at 45s or end
+    // But if they unmuted, at least reveal overlay gone
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+    const v  = document.getElementById('vslVideo');
+    const ov = document.getElementById('splashOverlay');
+    const sticky = document.querySelector('.sticky-cta');
+    if(sticky) sticky.style.display = 'none';
+    if(!v) return;
+
+    // Try autoplay muted
+    v.play().catch(()=>{
+        // Blocked — show tap-to-play
+        const pb = document.getElementById('splashPlayBtn');
+        const lb = ov ? ov.querySelector('.splash-label') : null;
+        if(pb) pb.textContent = '▶';
+        if(lb) lb.textContent = '▶  TAP TO PLAY';
+    });
+
+    // Unmute via native controls or overlay click → hide overlay
+    v.addEventListener('volumechange',()=>{
+        if(!v.muted && ov) ov.classList.add('hidden');
+    });
+
+    // 45 seconds watched → reveal page
+    v.addEventListener('timeupdate',()=>{
+        if(v.currentTime >= 45) revealPage('timeplayed_45s');
+    });
+
+    // Video ended → reveal page
+    v.addEventListener('ended',()=> revealPage('video_ended'));
+});
+
+// CTA clicks in hero → skip splash, reveal page
+document.querySelectorAll('a[href="#cta"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+        e.preventDefault();
+        if(!vslUnlocked){ revealPage('cta_click'); return; }
+        document.getElementById('cta').scrollIntoView({behavior:'smooth'});
+    });
+});
+
+// Spots counter
+let spots = 7;
+setInterval(()=>{
+    if(spots>3 && Math.random()<0.08){
+        spots--;
+        const el = document.getElementById('spots');
+        if(el) el.textContent = spots;
     }
+},45000);
 
-    document.addEventListener('DOMContentLoaded',()=>{
-        const v  = document.getElementById('vslVideo');
-        const ov = document.getElementById('unmuteOverlay');
-        const sticky = document.querySelector('.sticky-cta');
-
-        // Esconde sticky CTA até unlock
-        if(sticky) sticky.style.display = 'none';
-
-        if(!v) return;
-
-        // Tenta autoplay muted
-        const playPromise = v.play();
-        if(playPromise !== undefined){
-            playPromise.catch(()=>{
-                // Autoplay bloqueado (iOS baixa energia, etc.)
-                // Overlay já mostra ▶ — usuário precisa clicar
-                if(ov){
-                    ov.querySelector('.play-icon').textContent = '▶';
-                    ov.querySelector('.mute-badge').textContent = '▶ TAP TO PLAY';
-                }
-            });
+// Meta Pixel — InitiateCheckout
+document.querySelectorAll('.cta-btn, #main-cta').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+        if(typeof fbq!=='undefined'){
+            fbq('track','InitiateCheckout',{value:97,currency:'EUR',
+                content_name:'WhatsApp Automation Pack',
+                content_ids:['wpp-pack-97'],num_items:1});
         }
-
-        // Desmutar via controles nativos → unlock
-        v.addEventListener('volumechange',()=>{
-            if(!v.muted){ if(ov) ov.classList.add('hidden'); unlockContent('volumechange'); }
-        });
-        // 45s assistidos → unlock
-        v.addEventListener('timeupdate',()=>{ if(v.currentTime >= 45) unlockContent('timeplayed'); });
-        // Vídeo acabou → unlock
-        v.addEventListener('ended',()=>unlockContent('ended'));
     });
-
-    // Smooth scroll para CTAs internos
-    document.querySelectorAll('a[href="#cta"]').forEach(a=>{
-        a.addEventListener('click',e=>{
-            e.preventDefault();
-            if(!vslUnlocked){ unlockContent('cta_click'); return; }
-            document.getElementById('cta').scrollIntoView({behavior:'smooth'});
-        });
-    });
-
-    // Spots counter
-    let spots = 7;
-    setInterval(()=>{
-        if(spots>3 && Math.random()<0.08){
-            spots--;
-            const el = document.getElementById('spots');
-            if(el) el.textContent = spots;
-        }
-    },45000);
-
-    // Meta Pixel — InitiateCheckout
-    document.querySelectorAll('.cta-btn, #main-cta').forEach(btn=>{
-        btn.addEventListener('click',()=>{
-            if(typeof fbq!=='undefined'){
-                fbq('track','InitiateCheckout',{value:97,currency:'EUR',content_name:'WhatsApp Automation Pack',content_ids:['wpp-pack-97'],num_items:1});
-            }
-        });
-    });
+});
 </script>
 </body>
 </html>

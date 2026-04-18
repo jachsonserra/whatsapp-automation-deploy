@@ -24,7 +24,20 @@
 
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:#1a1a2e;background:#f0f4f8}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:#1a1a2e;background:#f0f4f8;overflow:hidden}
+        #vsl-splash{position:fixed;inset:0;z-index:9999;background:radial-gradient(ellipse at center,#0d1b3e 0%,#060a1a 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s ease}
+        #vsl-splash.fade-out{opacity:0;pointer-events:none}
+        .splash-logo{color:rgba(255,255,255,.55);font-size:.85rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px}
+        .splash-logo span{color:#25d366}
+        .splash-video-wrap{width:min(880px,94vw);aspect-ratio:16/9;border-radius:12px;overflow:hidden;box-shadow:0 0 80px rgba(37,211,102,.18),0 20px 60px rgba(0,0,0,.7);position:relative;cursor:pointer;background:#000}
+        .splash-video-wrap video{width:100%;height:100%;object-fit:cover;display:block}
+        .splash-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,.52);transition:opacity .4s}
+        .splash-overlay.hidden{opacity:0;pointer-events:none}
+        .splash-play{width:80px;height:80px;background:rgba(37,211,102,.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#fff;margin-bottom:18px;animation:splash-pulse 1.8s infinite}
+        @keyframes splash-pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)}70%{box-shadow:0 0 0 22px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+        .splash-label{color:#fff;font-size:1.05rem;font-weight:700;background:rgba(0,0,0,.55);padding:10px 22px;border-radius:50px;border:2px solid rgba(37,211,102,.5)}
+        .splash-sub{color:rgba(255,255,255,.6);font-size:.82rem;margin-top:8px;text-align:center}
+        .splash-cta-hint{margin-top:20px;color:rgba(255,255,255,.38);font-size:.78rem;text-align:center;letter-spacing:.5px}
         .container{max-width:960px;margin:0 auto;padding:20px}
         .hero{background:linear-gradient(135deg,#0f3460 0%,#16213e 60%,#0d7a4e 100%);color:#fff;text-align:center;padding:60px 30px 50px;border-radius:20px;margin-bottom:10px;position:relative;overflow:hidden}
         .hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(37,211,102,.08) 0%,transparent 60%);pointer-events:none}
@@ -125,6 +138,22 @@
     </style>
 </head>
 <body>
+
+<div id="vsl-splash">
+    <div class="splash-logo">💬 <span>Pack Automatización</span> WhatsApp</div>
+    <div class="splash-video-wrap" onclick="splashUnmute()">
+        <video id="vslVideo" playsinline autoplay muted preload="auto" poster="/whatsapp-automation-video-poster-es.jpg">
+            <source src="/whatsapp-automation-video-ES.mp4" type="video/mp4">
+        </video>
+        <div class="splash-overlay" id="splashOverlay">
+            <div class="splash-play" id="splashPlayBtn">▶</div>
+            <div class="splash-label">🔊 PULSA PARA OÍR</div>
+            <div class="splash-sub">Reproduciendo sin sonido — toca para escuchar</div>
+        </div>
+    </div>
+    <div class="splash-cta-hint">⬇ El precio y la oferta aparecen tras el vídeo</div>
+</div>
+
 <div class="container">
 
     <!-- HERO -->
@@ -353,65 +382,63 @@
 </div>
 
 <script>
-    // SCROLL LOCK
-    document.documentElement.style.overflow='hidden';
-    document.body.style.overflow='hidden';
-
-    let vslUnlocked=false;
-    function unlockContent(reason){
-        if(vslUnlocked) return; vslUnlocked=true;
-        document.documentElement.style.overflow='';
-        document.body.style.overflow='';
-        const locked=document.getElementById('lockedContent');
-        const notice=document.getElementById('lockNotice');
-        const sticky=document.querySelector('.sticky-cta');
-        if(locked) locked.classList.add('revealed');
-        if(notice) notice.classList.add('hidden');
-        if(sticky) sticky.style.display='block';
-        if(typeof fbq!=='undefined') fbq('track','ViewContent',{content_name:'VSL Unlocked ES:'+reason});
-        setTimeout(()=>{const ct=document.querySelector('#lockedContent .section'); if(ct) ct.scrollIntoView({behavior:'smooth',block:'start'});},600);
-    }
-    function unmuteAndPlay(){
-        const v=document.getElementById('vslVideo');
-        const ov=document.getElementById('unmuteOverlay');
-        if(!v) return;
-        v.muted=false; v.currentTime=0;
-        v.play().catch(()=>{ v.muted=true; v.play(); });
-        if(ov) ov.classList.add('hidden');
-        unlockContent('unmute');
-    }
-    document.addEventListener('DOMContentLoaded',()=>{
-        const v=document.getElementById('vslVideo');
-        const ov=document.getElementById('unmuteOverlay');
-        const sticky=document.querySelector('.sticky-cta');
-        if(sticky) sticky.style.display='none';
-        if(!v) return;
-        const pp=v.play();
-        if(pp!==undefined) pp.catch(()=>{
-            if(ov){ ov.querySelector('.play-icon').textContent='▶'; ov.querySelector('.mute-badge').textContent='▶ PULSA PARA REPRODUCIR'; }
-        });
-        v.addEventListener('volumechange',()=>{ if(!v.muted){ if(ov) ov.classList.add('hidden'); unlockContent('volumechange'); } });
-        v.addEventListener('timeupdate',()=>{ if(v.currentTime>=45) unlockContent('timeplayed'); });
-        v.addEventListener('ended',()=>unlockContent('ended'));
+let vslUnlocked=false;
+function revealPage(reason){
+    if(vslUnlocked) return; vslUnlocked=true;
+    const splash=document.getElementById('vsl-splash');
+    if(splash){ splash.classList.add('fade-out'); setTimeout(()=>{splash.style.display='none';},900); }
+    document.body.style.overflow='';
+    const locked=document.getElementById('lockedContent');
+    const notice=document.getElementById('lockNotice');
+    const sticky=document.querySelector('.sticky-cta');
+    if(locked) locked.classList.add('revealed');
+    if(notice) notice.classList.add('hidden');
+    if(sticky) sticky.style.display='block';
+    if(typeof fbq!=='undefined') fbq('track','ViewContent',{content_name:'VSL Unlocked ES:'+reason});
+    setTimeout(()=>{ window.scrollTo({top:0,behavior:'smooth'}); },400);
+}
+function splashUnmute(){
+    const v=document.getElementById('vslVideo');
+    const ov=document.getElementById('splashOverlay');
+    if(!v) return;
+    v.muted=false; v.currentTime=0;
+    v.play().catch(()=>{ v.muted=true; v.play(); });
+    if(ov) ov.classList.add('hidden');
+}
+document.addEventListener('DOMContentLoaded',()=>{
+    const v=document.getElementById('vslVideo');
+    const ov=document.getElementById('splashOverlay');
+    const sticky=document.querySelector('.sticky-cta');
+    if(sticky) sticky.style.display='none';
+    if(!v) return;
+    v.play().catch(()=>{
+        const pb=document.getElementById('splashPlayBtn');
+        const lb=ov?ov.querySelector('.splash-label'):null;
+        if(pb) pb.textContent='▶';
+        if(lb) lb.textContent='▶  PULSA PARA REPRODUCIR';
     });
-    document.querySelectorAll('a[href="#cta"]').forEach(a=>{
-        a.addEventListener('click',e=>{
-            e.preventDefault();
-            if(!vslUnlocked){ unlockContent('cta_click'); return; }
-            document.getElementById('cta').scrollIntoView({behavior:'smooth'});
-        });
+    v.addEventListener('volumechange',()=>{ if(!v.muted&&ov) ov.classList.add('hidden'); });
+    v.addEventListener('timeupdate',()=>{ if(v.currentTime>=45) revealPage('timeplayed_45s'); });
+    v.addEventListener('ended',()=>revealPage('video_ended'));
+});
+document.querySelectorAll('a[href="#cta"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+        e.preventDefault();
+        if(!vslUnlocked){ revealPage('cta_click'); return; }
+        document.getElementById('cta').scrollIntoView({behavior:'smooth'});
     });
-    let spots=7;
-    setInterval(()=>{
-        if(spots>3&&Math.random()<0.08){spots--;const el=document.getElementById('spots');if(el)el.textContent=spots;}
-    },45000);
-    document.querySelectorAll('.cta-btn,#main-cta').forEach(btn=>{
-        btn.addEventListener('click',()=>{
-            if(typeof fbq!=='undefined'){
-                fbq('track','InitiateCheckout',{value:97,currency:'EUR',content_name:'Pack Automatización WhatsApp',content_ids:['wpp-pack-97'],num_items:1});
-            }
-        });
+});
+let spots=7;
+setInterval(()=>{
+    if(spots>3&&Math.random()<0.08){spots--;const el=document.getElementById('spots');if(el)el.textContent=spots;}
+},45000);
+document.querySelectorAll('.cta-btn,#main-cta').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+        if(typeof fbq!=='undefined'){
+            fbq('track','InitiateCheckout',{value:97,currency:'EUR',content_name:'Pack Automatización WhatsApp',content_ids:['wpp-pack-97'],num_items:1});
+        }
     });
+});
 </script>
 </body>
 </html>
